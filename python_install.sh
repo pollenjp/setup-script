@@ -1,10 +1,12 @@
-apt update
-apt upgrade
+apt update -y
+apt upgrade -y
 
-apt install python3                             # install python3
-apt install python3-pip python3-dev             # install pi3
-apt install libopencv-dev python3-opencv        # install opencv
-apt build-dep python3-matplotlib                # install matplotlib
+apt install python3 -y                          # install python3
+apt install python3-pip python3-dev -y          # install pi3
+apt install libopencv-dev python3-opencv -y     # install opencv
+apt build-dep python3-matplotlib -y             # install matplotlib
+
+pip3 install --upgrade pip
 pip3 install numpy                              # install numpy
 pip3 install pandas                             # install pandas
 pip3 install seaborn                            # install seaborn
