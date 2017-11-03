@@ -1,6 +1,22 @@
 apt update -y
 apt upgrade -y
 
+# python2
+apt install python  -y                          # install python
+apt install python-pip python-dev -y            # install pi3
+apt install libopencv-dev python-opencv -y     # install opencv
+apt build-dep python-matplotlib -y             # install matplotlib
+
+pip install --upgrade pip
+pip install numpy                              # install numpy
+pip install pandas                             # install pandas
+pip install seaborn                            # install seaborn
+pip install -U scikit-learn                    # install scikitlearn(sklearn)
+pip install jupyter                            # install jupyter
+pip install tensorflow                         # install tensorflow (no GPU)
+pip install keras                              # install keras
+
+# python3
 apt install python3 -y                          # install python3
 apt install python3-pip python3-dev -y          # install pi3
 apt install libopencv-dev python3-opencv -y     # install opencv
