@@ -15,6 +15,7 @@ pip install -U scikit-learn                    # install scikitlearn(sklearn)
 pip install jupyter                            # install jupyter
 pip install tensorflow                         # install tensorflow (no GPU)
 pip install keras                              # install keras
+pip install cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 
 # python3
 apt install python3 -y                          # install python3
@@ -30,3 +31,4 @@ pip3 install -U scikit-learn                    # install scikitlearn(sklearn)
 pip3 install jupyter                            # install jupyter
 pip3 install tensorflow                         # install tensorflow (no GPU)
 pip3 install keras                              # install keras
+pip3 install cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
