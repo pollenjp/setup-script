@@ -8,13 +8,14 @@ apt install libopencv-dev python-opencv -y     # install opencv
 apt build-dep python-matplotlib -y             # install matplotlib
 
 pip install --upgrade pip
-pip install numpy                               # install numpy
-pip install pandas                              # install pandas
-pip install seaborn                             # install seaborn
-pip install -U scikit-learn                     # install scikitlearn(sklearn)
-pip install jupyter                             # install jupyter
+pip install numpy
+pip install scipy
+pip install -U scikit-learn
+pip install pandas
+pip install seaborn
+pip install jupyter
 pip install tensorflow                          # install tensorflow (no GPU)
-pip install keras                               # install keras
+pip install keras
 pip install cookiecutter                        # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 pip install jedi                                # auto-completion
 
@@ -25,12 +26,13 @@ apt install python3-pip python3-dev -y          # install pi3
 #apt build-dep python3-matplotlib -y            # install matplotlib
 
 pip3 install --upgrade pip
-pip3 install numpy                              # install numpy
-pip3 install pandas                             # install pandas
-pip3 install seaborn                            # install seaborn
-pip3 install -U scikit-learn                    # install scikitlearn(sklearn)
-pip3 install jupyter                            # install jupyter
-pip3 install tensorflow                         # install tensorflow (no GPU)
-pip3 install keras                              # install keras
+pip3 install numpy
+pip install scipy
+pip3 install -U scikit-learn
+pip3 install pandas
+pip3 install seaborn
+pip3 install jupyter
+pip3 install tensorflow
+pip3 install keras
 pip3 install cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 pip3 install jedi                               # auto-completion
