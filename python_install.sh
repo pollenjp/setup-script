@@ -15,6 +15,7 @@ pip install -U scikit-learn
 pip install pandas
 pip install seaborn
 pip install jupyter
+pip install jupyter_contrib_nbextensions
 pip install tensorflow                          # install tensorflow (no GPU)
 pip install keras
 pip install opencv-python                       # opencv
@@ -34,6 +35,7 @@ pip3 install -U scikit-learn
 pip3 install pandas
 pip3 install seaborn
 pip3 install jupyter
+pip3 install jupyter_contrib_nbextensions
 pip3 install tensorflow
 pip3 install keras
 pip3 install opencv-python                      # opencv
