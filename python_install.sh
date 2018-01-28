@@ -21,6 +21,8 @@ pip install keras
 pip install opencv-python                       # opencv
 pip install cookiecutter                        # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 pip install jedi                                # auto-completion
+pip install pydot
+pip install graphviz
 
 # python3
 apt install python3 -y                          # install python3
@@ -41,6 +43,8 @@ pip3 install keras
 pip3 install opencv-python                      # opencv
 pip3 install cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 pip3 install jedi                               # auto-completion
+pip3 install pydot
+pip3 install graphviz
 
 # jupyter setting
 jupyter contrib nbextension install --user
