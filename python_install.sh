@@ -42,3 +42,5 @@ pip3 install opencv-python                      # opencv
 pip3 install cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 pip3 install jedi                               # auto-completion
 
+# jupyter setting
+jupyter contrib nbextension install --user
