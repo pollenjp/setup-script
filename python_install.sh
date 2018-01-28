@@ -32,7 +32,7 @@ apt install python3 -y                          # install python3
 
 pip3 install --upgrade pip
 pip3 install numpy
-pip install scipy
+pip3 install scipy
 pip3 install -U scikit-learn
 pip3 install pandas
 pip3 install seaborn
@@ -48,3 +48,6 @@ pip3 install graphviz
 
 # jupyter setting
 jupyter contrib nbextension install --user
+
+# graphviz is needed for keras.utils.vis_model.plot_model
+apt install -y graphviz libgraphviz-dev
