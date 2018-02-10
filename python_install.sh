@@ -1,4 +1,6 @@
 # Ubuntu16.04
+# pip install -r requirements.txt
+# https://www.lifewithpython.com/2014/03/python-install-multiple-modules-.html
 apt update -y
 apt upgrade -y
 
