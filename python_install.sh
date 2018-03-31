@@ -1,6 +1,9 @@
 # Ubuntu16.04
 apt update -y
 apt upgrade -y
+# install pip
+apt install python-pip
+apt install python3-pip
 
 # python2
 apt install python  -y                          # install python
