@@ -50,6 +50,10 @@ pip3 install cookiecutter                       # https://qiita.com/Hironsan/ite
 pip3 install jedi                               # auto-completion
 pip3 install pydot
 pip3 install graphviz
+    # for pandas
+pip3 install "dask[complete]"                   # Install everything
+pip3 install ray
+
 
 # jupyter setting
 jupyter contrib nbextension install --user
