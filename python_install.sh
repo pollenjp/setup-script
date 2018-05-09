@@ -43,6 +43,7 @@ pip3 install pandas
 pip3 install seaborn
 pip3 install jupyter
 pip3 install jupyter_contrib_nbextensions
+pip3 install ipython-sql
 pip3 install tensorflow
 pip3 install keras
 pip3 install opencv-python                      # opencv
