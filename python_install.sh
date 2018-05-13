@@ -42,8 +42,9 @@ pip3 install -U scikit-learn
 pip3 install pandas
 pip3 install seaborn
 pip3 install jupyter
-pip3 install jupyter_contrib_nbextensions
-pip3 install ipython-sql
+pip3 install jupyter_contrib_nbextensions       # jupyter-extenxion
+pip3 install ipython-sql                        # jupyter-extenxion
+pip3 install memory_profiler
 pip3 install tensorflow
 pip3 install keras
 pip3 install opencv-python                      # opencv
@@ -54,6 +55,10 @@ pip3 install graphviz
     # for pandas
 pip3 install "dask[complete]"                   # Install everything
 pip3 install ray
+# sql
+pip3 install pymysql
+pip3 install pymssql
+apt install freetds-dev                         # for pymssql
 
 
 # jupyter setting
