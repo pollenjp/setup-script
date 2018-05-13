@@ -52,6 +52,8 @@ pip3 install cookiecutter                       # https://qiita.com/Hironsan/ite
 pip3 install jedi                               # auto-completion
 pip3 install pydot
 pip3 install graphviz
+pip install -U memory_profiler                  # for check memory
+
     # for pandas
 pip3 install "dask[complete]"                   # Install everything
 pip3 install ray
@@ -59,6 +61,9 @@ pip3 install ray
 pip3 install pymysql
 pip3 install pymssql
 apt install freetds-dev                         # for pymssql
+
+# for Neovim
+pip3 install neovim
 
 
 # jupyter setting
