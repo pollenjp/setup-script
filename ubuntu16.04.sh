@@ -12,6 +12,11 @@ apt-get update -y
 apt-get install neovim -y
 
 
+#--------------------
+#   instal OS emulator
+#--------------------
+sudo apt install qemu
+
 
 
 
