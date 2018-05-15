@@ -4,8 +4,8 @@
 apt update -y
 apt upgrade -y
 # install pip
-apt install python-pip
-apt install python3-pip
+apt install python-pip -y
+apt install python3-pip -y
 
 # python2
 apt install python  -y                          # install python
@@ -35,35 +35,35 @@ apt install python3 -y                          # install python3
 #apt install libopencv-dev python3-opencv -y     # install opencv
 #apt build-dep python3-matplotlib -y             # install matplotlib
 
-pip3 install --upgrade pip
-pip3 install numpy
-pip3 install scipy
+pip3 install -U pip
+pip3 install -U numpy
+pip3 install -U scipy
 pip3 install -U scikit-learn
-pip3 install pandas
-pip3 install seaborn
-pip3 install jupyter
-pip3 install jupyter_contrib_nbextensions       # jupyter-extenxion
-pip3 install ipython-sql                        # jupyter-extenxion
-pip3 install memory_profiler
-pip3 install tensorflow
-pip3 install keras
-pip3 install opencv-python                      # opencv
-pip3 install cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
-pip3 install jedi                               # auto-completion
-pip3 install pydot
-pip3 install graphviz
-pip install -U memory_profiler                  # for check memory
+pip3 install -U pandas
+pip3 install -U seaborn
+pip3 install -U jupyter
+pip3 install -U jupyter_contrib_nbextensions       # jupyter-extenxion
+pip3 install -U ipython-sql                        # jupyter-extenxion
+pip3 install -U memory_profiler
+pip3 install -U tensorflow
+pip3 install -U keras
+pip3 install -U opencv-python                      # opencv
+pip3 install -U cookiecutter                       # https://qiita.com/Hironsan/items/4479bdb13458249347a1
+pip3 install -U jedi                               # auto-completion
+pip3 install -U pydot
+pip3 install -U graphviz
+pip3 install -U memory_profiler                  # for check memory
 
     # for pandas
-pip3 install "dask[complete]"                   # Install everything
-pip3 install ray
+pip3 install -U "dask[complete]"                   # Install everything
+pip3 install -U ray
 # sql
-pip3 install pymysql
-pip3 install pymssql
-apt install freetds-dev                         # for pymssql
+pip3 install -U pymysql
+pip3 install -U pymssql
+apt3 install -U freetds-dev                         # for pymssql
 
 # for Neovim
-pip3 install neovim
+pip3 install -U neovim
 
 
 # jupyter setting
