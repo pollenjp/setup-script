@@ -2,6 +2,11 @@
 sudo apt update -y
 sudo apt upgrade -y
 
+sudo apt install -y screnn
+
+sudo apt install libgnome2-bin          # `gnome-open .`
+
+
 #--------------------
 #   install neovim
 #--------------------
