@@ -4,7 +4,9 @@ sudo apt upgrade -y
 
 sudo apt install -y screnn
 
-sudo apt install libgnome2-bin          # `gnome-open .`
+sudo apt install -y libgnome2-bin          # `gnome-open .`
+
+sudo apt install -y nasm                # asembler nasm
 
 
 #--------------------
