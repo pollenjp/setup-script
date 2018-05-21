@@ -8,6 +8,9 @@ sudo apt install -y libgnome2-bin          # `gnome-open .`
 
 sudo apt install -y nasm                # asembler nasm
 
+sudo apt install -y nmap        # network command
+                                # https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/
+
 
 #--------------------
 #   install neovim
