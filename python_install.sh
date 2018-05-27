@@ -61,7 +61,8 @@ sudo pip3 install -U ray
 sudo pip3 install -U pymysql
 sudo pip3 install -U pymssql
 
-sudo apt install -U freetds-dev                         # for pymssql
+sudo apt install freetds-dev -y                         # for pymssql
+sudo apt install python3-tk -y                          # module named 'tkinter'
 
 # for Neovim
 sudo pip3 install -U neovim
