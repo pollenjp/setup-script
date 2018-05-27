@@ -24,6 +24,6 @@ file2="${HOME}/dotfiles/_vimrc"
 ln -s "$file2" "$file"
 
 cd "${HOME}/dotfiles/_vim/bundle"
-git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+git clone git://github.com/Shougo/neobundle.vim
 
 
