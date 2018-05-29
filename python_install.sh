@@ -58,8 +58,11 @@ sudo pip3 install -U memory_profiler                  # for check memory
 sudo pip3 install -U "dask[complete]"                   # Install everything
 sudo pip3 install -U ray
 # sql
+sudo pip3 install ipython-sql                           # sql
 sudo pip3 install -U pymysql
 sudo pip3 install -U pymssql
+sudo pip3 install psycopg2
+sudo pip3 install pgspecial                             # for posgresql : https://pypi.org/project/pgspecial/
 
 sudo apt install freetds-dev -y                         # for pymssql
 sudo apt install python3-tk -y                          # module named 'tkinter'
@@ -70,7 +73,20 @@ sudo pip3 install -U neovim
 
 # jupyter setting
 # https://github.com/ipython-contrib/jupyter_contrib_nbextensions
-sudo jupyter contrib nbextension install --user
+jupyter contrib nbextension install --user
+
+#----------------------------------------
+#   jupyter-vim-binding
+#----------------------------------------
+mkdir -p $(jupyter --data-dir)/nbextensions
+# Clone the repository
+cd $(jupyter --data-dir)/nbextensions
+git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+# Activate the extension
+jupyter nbextension enable vim_binding/vim_binding
+cd ${HOME}
+
+
 
 # graphviz is needed for keras.utils.vis_model.plot_model
 sudo apt install -y graphviz libgraphviz-dev
