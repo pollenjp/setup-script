@@ -16,17 +16,24 @@ sudo apt install -y nmap        # network command
 #   install neovim
 #--------------------
 # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
-sudo apt-get install software-properties-common -y
+sudo apt-get install  -y software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt-get update -y
-sudo apt-get install neovim -y
+sudo apt-get install -y neovim
 
 
 #--------------------
 #   instal OS emulator
 #--------------------
-sudo apt install qemu
+sudo apt install -y qemu
 
+
+#--------------------
+#   Unity on Linux
+#--------------------
+# How can I install Unity 3D game engine for Ubuntu? - askubuntu
+# https://askubuntu.com/questions/957991/how-can-i-install-unity-3d-game-engine-for-ubuntu/1017062
+sudo apt install -y gdebi
 
 
 
