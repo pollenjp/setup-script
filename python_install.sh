@@ -38,6 +38,7 @@ sudo apt install python3 -y                          # install python3
 sudo pip3 install -U pip
 sudo pip3 install -U numpy
 sudo pip3 install -U scipy
+sudo pip3 install -U cython
 sudo pip3 install -U scikit-learn
 sudo pip3 install -U pandas
 sudo pip3 install -U seaborn
@@ -86,6 +87,11 @@ git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 jupyter nbextension enable vim_binding/vim_binding
 cd ${HOME}
 
+#------------------------------------------------------------
+#   Run Google Colaboratory on local runtime
+#------------------------------------------------------------
+sudo pip3 install jupyter_http_over_ws
+jupyter serverextension enable --py jupyter_http_over_ws
 
 
 # graphviz is needed for keras.utils.vis_model.plot_model
