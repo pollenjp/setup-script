@@ -29,6 +29,15 @@ sudo apt install -y qemu
 
 
 #--------------------
+#   Docker
+#--------------------
+# Install
+
+# zsh completion
+# https://docs.docker.com/compose/completion/#available-completions
+
+
+#--------------------
 #   OpenGL
 #--------------------
 #   https://medium.com/@Plimsky/how-to-install-a-opengl-environment-on-ubuntu-e3918cf5ab6c
