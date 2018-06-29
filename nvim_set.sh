@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# execute by user
 
 cd
 directory="${HOME}/dotfiles"
@@ -15,11 +15,20 @@ then
 	mkdir "$directory"
 fi
 
-directory="${HOME}/.config/nvim"
-directory2="${HOME}/dotfiles/_vim"
-ln -s "$directory2" "$directory"
+directory1="${HOME}/dotfiles/_vim"
+directory2="${HOME}/.config/nvim"
+directory3="${HOME}/.vim"
+ln -s "$directory1" "$directory2"
+ln -s "$directory1" "$directory3"
 
-file="${HOME}/.config/nvim/init.vim"
-file2="${HOME}/dotfiles/.vimrc"
-ln -s "$file2" "$file"
+file1="${HOME}/dotfiles/_vimrc"
+file2="${HOME}/.config/nvim/init.vim"
+file2="${HOME}/.vimrc
+ln -s "$file1" "$file2"
+ln -s "$file1" "$file3"
+
+
+cd "${HOME}/dotfiles/_vim/bundle"
+git clone git://github.com/Shougo/neobundle.vim
+
 
