@@ -1,4 +1,5 @@
 #!/bin/bash -xeu
+
 #----------------------------------------------------------------------------------------------------
 #  bash option
 #----------------------------------------------------------------------------------------------------
@@ -181,7 +182,7 @@ jupyter contrib nbextension install --user
 #####--------------------
 ######----------
 ###### save current directory
-CWD=${pwd}
+CWD=$(pwd)
 ######----------
 ######  Clone the repository
 mkdir -p $(jupyter --data-dir)/nbextensions
@@ -190,7 +191,7 @@ git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 ######----------
 ######  Activate the extension
 jupyter nbextension enable vim_binding/vim_binding
-cd ${CWD}
+cd $(CWD)
 
 ####----------------------------------------
 ####   Run Google Colaboratory on local runtime
