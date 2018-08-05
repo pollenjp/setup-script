@@ -11,12 +11,12 @@ deb_repo="cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb"
 echo "${CWD}/${deb_repo}"
 if [ ! -f ${CWD}/${deb_repo} ]; then
     echo "File not found!"
-    #wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb
+    wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb
 fi
-#sudo dpkg -i "${CWD}/${deb_repo}"
-#sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
-#sudo apt-get update
-#sudo apt-get install -y cuda-9-0
+sudo dpkg -i "${CWD}/${deb_repo}"
+sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install -y cuda-9-0
 
 
 #--------------------------------------------------------------------------------

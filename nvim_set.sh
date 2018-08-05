@@ -1,34 +1,48 @@
-#!/bin/bash
+#!/bin/bash -eux
+
 # execute by user
 
-cd
-directory="${HOME}/dotfiles"
-if [ ! -d "$directory" ] 
-then
-	git clone git@bitbucket.org:pollenjp/dotfiles.git
+## save current
+CWD=$(pwd)
+
+#--------------------------------------------------------------------------------
+cd $HOME
+directory1="${HOME}/dotfiles"
+if [ ! -d "${directory1}" ]; then
+  git clone git@bitbucket.org:pollenjp/dotfiles.git
 fi
 
 
-directory="${HOME}/.config"
-if [ ! -d "$directory" ] 
-then
-	mkdir "$directory"
+directory1="${HOME}/.config"
+if [ ! -d "${directory1}" ]; then
+  mkdir "${directory1}"
 fi
 
 directory1="${HOME}/dotfiles/_vim"
 directory2="${HOME}/.config/nvim"
 directory3="${HOME}/.vim"
-ln -s "$directory1" "$directory2"
-ln -s "$directory1" "$directory3"
+##
+if [ ! -d ${directory2} ]; then
+  ln -s "${directory1}" "${directory2}"
+fi
+if [ ! -d ${directory3} ]; then
+  ln -s "${directory1}" "${directory3}"
+fi
 
 file1="${HOME}/dotfiles/_vimrc"
 file2="${HOME}/.config/nvim/init.vim"
-file2="${HOME}/.vimrc
-ln -s "$file1" "$file2"
-ln -s "$file1" "$file3"
+file3="${HOME}/.vimrc"
+if [ ! -f $file2 ]; then
+  ln -s "$file1" "$file2"
+fi
+if [ ! -f ${file3} ]; then
+  ln -s "$file1" "$file3"
+fi
 
 
-cd "${HOME}/dotfiles/_vim/bundle"
-git clone git://github.com/Shougo/neobundle.vim
 
+#--------------------
+#  Back to working directory
+#--------------------
+cd ${CWD}
 
