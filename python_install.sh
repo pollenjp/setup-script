@@ -46,12 +46,14 @@ sudo pip3 install -U cookiecutter     # https://qiita.com/Hironsan/items/4479bdb
 ####    - https://www.tensorflow.org/install/
 ####  - tensorflow
 ####  - tensorflow-gpu
+####  - https://github.com/bstriner/keras-tqdm
 if [ "$TENSORFLOWGPU" = true ]; then
     sudo pip3 install -U tensorflow-gpu
 else
     sudo pip3 install -U tensorflow
 fi
 sudo pip3 install -U keras
+sudo pip3 install -U keras-tqdm
 #####----------------------------------------
 #####  graphviz is needed for keras.utils.vis_model.plot_model
 sudo apt install -y graphviz libgraphviz-dev
