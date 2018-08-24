@@ -20,7 +20,8 @@ sudo apt upgrade -y
 sudo apt dist-upgrade -y
 
 ###----------------------------------------
-sudo apt install -y screen
+sudo apt install -y curl
+sudo apt install -y tree
 ###----------------------------------------
 ###  compizconfig-settings-manager
 ###    - zoom in out
@@ -103,6 +104,10 @@ sudo apt install net-tools
 
 #----------------------------------------------------------------------------------------------------
 #  Other Shell Script
+##--------------------
+##  Screen
+##--------------------
+./screen.settin.sh
 ##--------------------
 ## Python
 ##--------------------
