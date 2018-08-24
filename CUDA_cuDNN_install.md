@@ -9,6 +9,7 @@
     - `sudo apt-get update`
     - `sudo apt-get install cuda`
 1. download and install cuDNN for the CUDA
+  - [Membership Required | NVIDIA Developer](https://developer.nvidia.com/rdp/cudnn-download) (要メンバー登録)
 
 - [CUDA 9.0とcuDNN 7.0をUbuntu 16.04LTSにインストールする - Qiita](https://qiita.com/JeJeNeNo/items/b30597918db3781e20cf)
 - [Ubuntu 16.04へのCUDAインストール方法 - Qiita](https://qiita.com/yukoba/items/3692f1cb677b2383c983)
@@ -33,5 +34,4 @@ sudo apt-get install cuda
 
 
 ## cuDNN 7.1
-- [Membership Required | NVIDIA Developer](https://developer.nvidia.com/rdp/cudnn-download) (要メンバー登録)
 
