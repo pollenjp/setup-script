@@ -28,6 +28,7 @@ sudo pip3 install -U numpy
 sudo pip3 install -U scipy
 sudo pip3 install -U cython
 sudo pip3 install -U scikit-learn
+sudo pip3 install -U scikit-image
 sudo pip3 install -U pandas
 sudo pip3 install -U seaborn
 sudo pip3 install -U jupyter
