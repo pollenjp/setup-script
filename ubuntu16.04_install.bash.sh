@@ -36,6 +36,7 @@ sudo apt install -y nasm
 sudo apt install -y nmap
 
 sudo apt install -y nkf
+sudo apt install -y less
 
 
 ##--------------------------------------------------------------------------------
@@ -110,7 +111,7 @@ sudo apt install -y net-tools
 ##--------------------
 ##  Screen
 ##--------------------
-./screen.settin.sh
+./screen_setting.sh
 ##--------------------
 ## Python
 ##--------------------
