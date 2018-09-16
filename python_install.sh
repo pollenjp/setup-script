@@ -1,4 +1,7 @@
 #!/bin/bash -eux
+#  reference
+#    - Writing Robust Bash Shell Scripts
+#      - https://www.davidpashley.com/articles/writing-robust-shell-scripts/#id2382181
 
 # Ubuntu16.04
 # pip install -r requirements.txt
@@ -7,7 +10,7 @@
 #----------------------------------------------------------------------------------------------------
 #  CHOISE
 #----------------------------------------------------------------------------------------------------
-TENSORFLOWGPU=false
+TENSORFLOWGPU=true
 
 
 #----------------------------------------------------------------------------------------------------
@@ -23,23 +26,26 @@ sudo apt install -y python3-pip
 ###------------------------------------------------------------
 ### PyPI (Python package index)
 ###------------------------------------------------------------
-sudo pip3 install -U pip
-sudo pip3 install -U numpy
-sudo pip3 install -U scipy
-sudo pip3 install -U cython
-sudo pip3 install -U scikit-learn
-sudo pip3 install -U scikit-image
-sudo pip3 install -U pandas
-sudo pip3 install -U seaborn
-sudo pip3 install -U jupyter
-sudo pip3 install -U opencv-python
-sudo pip3 install -U pydot
-sudo pip3 install -U graphviz
-sudo pip3 install -U jedi             # auto-completion
-sudo pip3 install -U "dask[complete]"
-sudo pip3 install -U ray
-
-sudo pip3 install -U cookiecutter     # https://qiita.com/Hironsan/items/4479bdb13458249347a1
+set +e
+sudo /usr/bin/pip3 uninstall -y setuptools
+set -e
+/usr/bin/pip3 install --user --upgrade setuptools
+/usr/bin/pip3 install --user --upgrade wheel
+/usr/bin/pip3 install --user --upgrade numpy
+/usr/bin/pip3 install --user --upgrade scipy
+/usr/bin/pip3 install --user --upgrade cython
+/usr/bin/pip3 install --user --upgrade scikit-learn
+/usr/bin/pip3 install --user --upgrade scikit-image 
+/usr/bin/pip3 install --user --upgrade pandas
+/usr/bin/pip3 install --user --upgrade seaborn
+/usr/bin/pip3 install --user --upgrade jupyter
+/usr/bin/pip3 install --user --upgrade opencv-python
+/usr/bin/pip3 install --user --upgrade pydot
+/usr/bin/pip3 install --user --upgrade graphviz
+/usr/bin/pip3 install --user --upgrade jedi  # auto-completion
+/usr/bin/pip3 install --user --upgrade "dask[complete]"
+/usr/bin/pip3 install --user --upgrade ray
+/usr/bin/pip3 install --user --upgrade cookiecutter  # https://qiita.com/Hironsan/items/4479bdb13458249347a1
 
 ####------------------------------------------------------------
 ####  TensorFlow / Keras
@@ -49,12 +55,12 @@ sudo pip3 install -U cookiecutter     # https://qiita.com/Hironsan/items/4479bdb
 ####  - tensorflow-gpu
 ####  - https://github.com/bstriner/keras-tqdm
 if [ "$TENSORFLOWGPU" = true ]; then
-    sudo pip3 install -U tensorflow-gpu
+    /usr/bin/pip3 install --user --upgrade tensorflow-gpu
 else
-    sudo pip3 install -U tensorflow
+    /usr/bin/pip3 install --user --upgrade tensorflow
 fi
-sudo pip3 install -U keras
-sudo pip3 install -U keras-tqdm
+/usr/bin/pip3 install --user --upgrade keras
+/usr/bin/pip3 install --user --upgrade keras-tqdm
 #####----------------------------------------
 #####  graphviz is needed for keras.utils.vis_model.plot_model
 sudo apt install -y graphviz libgraphviz-dev
@@ -65,22 +71,22 @@ sudo apt install -y graphviz libgraphviz-dev
 ####    - MySQL
 ####    - PostgreSQL
 ####      - https://pypi.org/project/pgspecial/
-sudo pip3 install -U ipython-sql  # sql
-sudo pip3 install -U psycopg2
-sudo pip3 install -U pgspecial    # for posgresql : https://pypi.org/project/pgspecial/
+/usr/bin/pip3 install --user --upgrade ipython-sql  # sql
+/usr/bin/pip3 install --user --upgrade psycopg2
+/usr/bin/pip3 install --user --upgrade pgspecial    # for posgresql : https://pypi.org/project/pgspecial/
 sudo apt install freetds-dev -y   # for pymssql
 sudo apt install python3-tk -y    # module named 'tkinter'
 
 ####------------------------------------------------------------
 ####  for NeoVim
 ####------------------------------------------------------------
-sudo pip3 install -U neovim
+/usr/bin/pip3 install --user --upgrade neovim
 
 ####------------------------------------------------------------
 ####  Jupyter
 ####------------------------------------------------------------
-sudo pip3 install -U jupyter_contrib_nbextensions
-sudo pip3 install -U ipython-sql
+/usr/bin/pip3 install --user --upgrade jupyter_contrib_nbextensions
+/usr/bin/pip3 install --user --upgrade ipython-sql
 #####------------------------------
 #####  setting
 #####------------------------------
@@ -104,12 +110,12 @@ if [ ! -f jupyter-vim-binding vim_binding ]; then
     git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 fi
 jupyter nbextension enable vim_binding/vim_binding
-cd $(CWD)
+cd ${CWD}
 
 ####----------------------------------------
 ####   Run Google Colaboratory on local runtime
 ####----------------------------------------
-sudo pip3 install jupyter_http_over_ws
+sudo /usr/bin/pip3 install --user --upgrade jupyter_http_over_ws
 jupyter serverextension enable --py jupyter_http_over_ws
 
 
