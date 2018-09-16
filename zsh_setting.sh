@@ -7,7 +7,7 @@
 sudo apt install -y zsh
 ##--------------------
 ##  set zsh as login shell
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 
 ##----------------------------------------
@@ -26,10 +26,14 @@ fi
 ##--------------------
 ##  .zshrc
 ##--------------------
-file1="${HOME}/dotfiles/_zshrc"
-file2="${HOME}/.zshrc"
-if [ ! -f $file2 ]; then
-  ln -s "$file1" "$file2"
+if [ ! -d "${HOME}/.zsh" ]; then
+    mkdir "${HOME}/.zsh"
+fi
+if [ ! -h "${HOME}/.zshrc" ]; then
+  ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
+fi
+if [ ! -h "${HOME}/.zsh/_zshrc.zshrc" ]; then
+  ln -s "${HOME}/dotfiles/_zsh/_zshrc.zshrc" "${HOME}/.zsh/_zshrc.zshrc"
 fi
 
 #--------------------
