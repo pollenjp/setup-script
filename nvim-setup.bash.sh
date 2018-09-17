@@ -23,14 +23,23 @@ directory1="${HOME}/.config"
 if [ ! -d "${directory1}" ]; then
   mkdir "${directory1}"
 fi
-directory1="${HOME}/dotfiles/_vim"
-directory2="${HOME}/.config/nvim"
-directory3="${HOME}/.vim"
-if [ ! -d ${directory2} ]; then
-  ln -s "${directory1}" "${directory2}"
+
+SOURCEVIMDIR="${HOME}/dotfiles/_vim"
+TARGETVIMDIR="${HOME}/.config/nvim"
+if [ ! -h ${TARGETVIMDIR} ]; then
+  if [ -d ${TARGETVIMDIR} ]; then
+    rm -r ${TARGETVIMDIR}
+  fi
+  ln -s ${SOURCEVIMDIR} ${TARGETVIMDIR}
 fi
-if [ ! -d ${directory3} ]; then
-  ln -s "${directory1}" "${directory3}"
+
+SOURCEVIMDIR="${HOME}/dotfiles/_vim"
+TARGETVIMDIR="${HOME}/.vim"
+if [ ! -h ${TARGETVIMDIR} ]; then
+  if [ -d ${TARGETVIMDIR} ]; then
+    rm -r ${TARGETVIMDIR}
+  fi
+  ln -s ${SOURCEVIMDIR} ${TARGETVIMDIR}
 fi
 
 ###--------------------
@@ -39,10 +48,10 @@ fi
 file1="${HOME}/dotfiles/_vimrc"
 file2="${HOME}/.config/nvim/init.vim"
 file3="${HOME}/.vimrc"
-if [ ! -f $file2 ]; then
+if [ ! -h $file2 ]; then
   ln -s "$file1" "$file2"
 fi
-if [ ! -f ${file3} ]; then
+if [ ! -h ${file3} ]; then
   ln -s "$file1" "$file3"
 fi
 
@@ -61,7 +70,7 @@ if [ ! -e ${directory2} ]; then
 fi
 
 ### https://github.com/VundleVim/Vundle.vim
-directory3="${directory1}/neobundle.vim"
+directory3="${directory1}/Vundle.vim"
 if [ ! -e ${directory3} ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ${directory3}
 fi
