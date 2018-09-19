@@ -27,6 +27,7 @@ ${JUPYTERCMD} contrib nbextension install --user
 #####------------------------------
 ${JUPYTERCMD} nbextension enable python-markdown/main  # MarkdownセルでPythonの変数を表示可能
 ${JUPYTERCMD} nbextension enable toc2/main             # TableOfContents
+${JUPYTERCMD} nbextension enable ruler/main            # ruler
 ######--------------------
 ######  jupyter-vim-binding
 ######--------------------
