@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 TENSORFLOWGPU=true
-PIPCMD=/usr/local/bin/pip3.5
+PIPCMD=/usr/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
 
 ##  Python3
@@ -15,6 +15,7 @@ sudo apt install -y python3-pip
 sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
 sudo apt install -y freetds-dev   # for pymssql
 sudo apt install -y python3-tk    # module named 'tkinter'
+sudo apt install -y ffmpeg        # ffmpeg-python - PyPI
 
 ##  If there are root owner files under ~/.local, pip command probably does not work.
 if [ ! -d ${HOME}/.local ]; then
@@ -46,6 +47,12 @@ ${PIPCMD} install --user --upgrade jedi  # auto-completion
 ${PIPCMD} install --user --upgrade "dask[complete]"
 ${PIPCMD} install --user --upgrade ray
 ${PIPCMD} install --user --upgrade cookiecutter  # https://qiita.com/Hironsan/items/4479bdb13458249347a1
+${PIPCMD} install --user --upgrade py4j
+${PIPCMD} install --user --upgrade gym
+${PIPCMD} install --user --upgrade ffmpeg-python  # https://pypi.org/project/ffmpeg-python/
+${PIPCMD} install --user --upgrade JSAnimation
+${PIPCMD} install --user --upgrade torch torchvision
+
 
 ####------------------------------------------------------------
 ####  TensorFlow / Keras
