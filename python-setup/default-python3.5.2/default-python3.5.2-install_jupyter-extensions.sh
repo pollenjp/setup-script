@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-PIPCMD=/usr/local/bin/pip3.5
+PIPCMD=/usr/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
 
 ##  If there are root owner files under ~/.local, pip command probably does not work.
@@ -42,11 +42,11 @@ ${JUPYTERCMD} nbextension enable vim_binding/vim_binding
 cd ${CWD}
 ######--------------------
 ######  toggle_all_line_numbers
-/home/sugisaki/.local/bin/jupyter nbextension enable toggle_all_line_numbers/main
+${HOME}/.local/bin/jupyter nbextension enable toggle_all_line_numbers/main
 ######  execute_time
-/home/sugisaki/.local/bin/jupyter nbextension enable execute_time/ExecuteTime
+${HOME}/.local/bin/jupyter nbextension enable execute_time/ExecuteTime
 ######  Table of Contents (2)
-/home/sugisaki/.local/bin/jupyter nbextension enable toc2/main
+${HOME}/.local/bin/jupyter nbextension enable toc2/main
 
 ####----------------------------------------
 ####   Run Google Colaboratory on local runtime
