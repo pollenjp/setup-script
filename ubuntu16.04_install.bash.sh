@@ -37,11 +37,19 @@ sudo apt install -y nmap
 
 sudo apt install -y nkf
 sudo apt install -y less
+sudo apt install -y texlive-full
+sudo apt install -y texmaker
 
 
 ##--------------------------------------------------------------------------------
 ##  application
 ##--------------------------------------------------------------------------------
+#  SimpleScreenRecoder
+#    - http://www.maartenbaert.be/simplescreenrecorder/#download
+sudo add-apt-repository -y ppa:maarten-baert/simplescreenrecorder
+sudo apt-get update -y
+sudo apt-get install -y simplescreenrecorder
+
 ###----------------------------------------
 ###  Git
 ###----------------------------------------
@@ -115,17 +123,17 @@ sudo apt install -y net-tools
 ##--------------------
 ./screen_setting.sh
 ##--------------------
-## Python
-##--------------------
-./python_install.sh
-##--------------------
-##  nvim
-##--------------------
-./nvim_set.sh
-##--------------------
 ##  zsh
 ##--------------------
 ./zsh_setting.sh
+##--------------------
+## Python
+##--------------------
+#./python_install.sh
+##--------------------
+##  nvim
+##--------------------
+#./nvim_set.sh
 
 
 
