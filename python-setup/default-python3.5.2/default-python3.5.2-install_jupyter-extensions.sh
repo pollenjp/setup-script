@@ -43,11 +43,16 @@ ${JUPYTERCMD} nbextension enable vim_binding/vim_binding
 cd ${CWD}
 ######--------------------
 ######  toggle_all_line_numbers
-${HOME}/.local/bin/jupyter nbextension enable toggle_all_line_numbers/main
+${JUPYTERCMD} nbextension enable toggle_all_line_numbers/main
 ######  execute_time
-${HOME}/.local/bin/jupyter nbextension enable execute_time/ExecuteTime
+${JUPYTERCMD} nbextension enable execute_time/ExecuteTime
 ######  Table of Contents (2)
-${HOME}/.local/bin/jupyter nbextension enable toc2/main
+${JUPYTERCMD} nbextension enable toc2/main
+#       ipywidget
+#         - https://ipywidgets.readthedocs.io/en/latest/user_install.html#installing-the-jupyterlab-extension
+${JUPYTERCMD} nbextension enable --py widgetsnbextension
+#       nbextensions
+#${JUPYTERCMD} nbextension enable nbextensions_configurator/tree_tab/main
 
 ####----------------------------------------
 ####   Run Google Colaboratory on local runtime
