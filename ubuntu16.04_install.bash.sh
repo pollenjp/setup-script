@@ -51,34 +51,6 @@ sudo apt-get update -y
 sudo apt-get install -y simplescreenrecorder
 
 ###----------------------------------------
-###  Git
-###----------------------------------------
-sudo apt install -y git
-####--------------------
-####  default setting
-git config --global user.email  "polleninjp@gmail.com"
-git config --global user.name   "pollenJP"
-git config --global core.editor "vim"
-git config --global pager.branch false
-#    - https://stackoverflow.com/a/48370253/9316234
-####--------------------
-####  alias
-####    - https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-
-###----------------------------------------
-###  install neovim
-###----------------------------------------
-###    - https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
-sudo apt-get install  -y software-properties-common
-sudo add-apt-repository ppa:neovim-ppa/stable -y
-sudo apt-get update -y
-sudo apt-get install -y neovim
-
-###----------------------------------------
 ##  instal OS emulator
 ###----------------------------------------
 sudo apt install -y qemu
@@ -118,21 +90,22 @@ sudo apt install -y net-tools
 
 #----------------------------------------------------------------------------------------------------
 #  Other Shell Script
-##--------------------
-##  Screen
-##--------------------
+####################
+#  Git
+./git_alias.sh
+####################
+#  Screen
 ./screen_setting.sh
-##--------------------
+####################
 ##  zsh
 ##--------------------
 ./zsh_setting.sh
-##--------------------
-## Python
-##--------------------
+####################
+# Python
+####################
 #./python_install.sh
-##--------------------
-##  nvim
-##--------------------
+####################
+#  nvim
 #./nvim_set.sh
 
 
