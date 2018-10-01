@@ -1,6 +1,18 @@
 #!/bin/bash -eux
 
-# execute by user
+# python3
+sudo apt install -y python3
+sudo apt install -y python3-dev
+sudo apt install -y python3-pip
+pip3 install --user --upgrade neovim
+
+####################################################################################################
+#  install neovim
+#    - https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
+sudo apt-get install  -y software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt-get update -y
+sudo apt-get install -y neovim
 
 ## save current
 CWD=$(pwd)
