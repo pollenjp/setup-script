@@ -29,14 +29,12 @@ fi
 if [ ! -h "${HOME}/.zshrc" ]; then
   ln -s "${HOME}/dotfiles/_zshrc" "${HOME}/.zshrc"
 fi
-if [ -d "${HOME}/.zsh" ]; then
-  echo "${HOME}/.zsh directory already exists."
-  return 1
+if [ -d "${HOME}/.zsh" ] || [ -h "${HOME}/.zsh" ]; then
+  echo "${HOME}/.zsh directory or symbolic link already exists."
+  exit 1
 fi
 if [ ! -h "${HOME}/.zsh" ]; then
   ln -s "${HOME}/dotfiles/_zsh" "${HOME}/.zsh"
-else
-  echo "${HOME}/.zsh symbolic link already exists."
 fi
 
 #--------------------
