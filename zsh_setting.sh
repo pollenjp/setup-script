@@ -26,7 +26,7 @@ fi
 ########################################
 #  .zsh/
 if [ -d "${HOME}/.zsh" ] || [ -h "${HOME}/.zsh" ]; then
-  echo "${HOME}/.zsh directory or symbolic link already exists."
+  echo "=== ${HOME}/.zsh directory or symbolic link already exists .==="
   exit 1
 fi
 if [ ! -h "${HOME}/.zsh" ]; then
