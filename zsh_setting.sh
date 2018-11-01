@@ -35,6 +35,10 @@ fi
 
 ########################################
 #  zshrc
+if [ ! -h "${HOME}/.zshrc" ] && [ -f "${HOME}/.zshrc" ]; then
+  cat "${HOME}/.zshrc" >> "${HOME}/.zsh/default.zshrc"
+  rm "${HOME}/.zshrc"
+fi
 if [ ! -h "${HOME}/.zshrc" ]; then
   ln -s "${HOME}/dotfiles/_zshrc" "${HOME}/.zshrc"
 fi
