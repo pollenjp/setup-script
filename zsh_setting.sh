@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------------------
 #  zsh
 ##--------------------
-#sudo apt install -y zsh
+sudo apt install -y zsh
 ##--------------------
 ##  set zsh as login shell
 chsh -s $(which zsh)
