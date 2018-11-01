@@ -2,8 +2,8 @@
 
 PYTHONVERSION=3.5.2
 TENSORFLOWGPU=true
-PIPCMD=${HOME}/.pyenv/shims/pip3
-JUPYTERCMD=${HOME}/.local/bin/jupyter
+PIPCMD="pip3"
+JUPYTERCMD="jupyter"
 
 sudo apt-get update -y
 sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
