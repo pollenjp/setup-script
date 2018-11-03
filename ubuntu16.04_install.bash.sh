@@ -40,6 +40,10 @@ sudo apt install -y less
 sudo apt install -y texlive-full
 sudo apt install -y texmaker
 
+#  install "software-properties-common" for "add-apt-repository" command
+#    - https://www.itzgeek.com/how-tos/mini-howtos/add-apt-repository-command-not-found-debian-ubuntu-quick-fix.html
+sudo apt-get install -y software-properties-common
+
 
 ##--------------------------------------------------------------------------------
 ##  application
@@ -92,7 +96,7 @@ sudo apt install -y net-tools
 #  Other Shell Script
 ####################
 #  Git
-./git_alias.sh
+./git-setup.sh
 ####################
 #  Screen
 ./screen_setting.sh

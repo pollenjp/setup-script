@@ -23,20 +23,25 @@ if [ ! -d "${directory1}" ]; then
   git clone git@bitbucket.org:pollenjp/dotfiles.git
 fi
 
-##--------------------
-##  .zshrc
-##--------------------
-if [ ! -h "${HOME}/.zshrc" ]; then
-  ln -s "${HOME}/dotfiles/_zshrc" "${HOME}/.zshrc"
-fi
+########################################
+#  .zsh/
 if [ -d "${HOME}/.zsh" ] || [ -h "${HOME}/.zsh" ]; then
-  echo "${HOME}/.zsh directory or symbolic link already exists."
+  echo "=== ${HOME}/.zsh directory or symbolic link already exists .==="
   exit 1
 fi
 if [ ! -h "${HOME}/.zsh" ]; then
   ln -s "${HOME}/dotfiles/_zsh" "${HOME}/.zsh"
 fi
 
+########################################
+#  zshrc
+if [ ! -h "${HOME}/.zshrc" ] && [ -f "${HOME}/.zshrc" ]; then
+  cat "${HOME}/.zshrc" >> "${HOME}/.zsh/default.zshrc"
+  rm "${HOME}/.zshrc"
+fi
+if [ ! -h "${HOME}/.zshrc" ]; then
+  ln -s "${HOME}/dotfiles/_zshrc" "${HOME}/.zshrc"
+fi
 #--------------------
 #  Back to working directory
 #--------------------
