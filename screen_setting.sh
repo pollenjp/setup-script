@@ -1,5 +1,9 @@
 #!/bin/bash -eux
-
+# If you want to kill deatached session
+#  ```
+#  $ screen -X -S <session> quit
+#  ```
+#  - https://stackoverflow.com/a/1509764/9316234
 
 sudo apt install -y screen
 
