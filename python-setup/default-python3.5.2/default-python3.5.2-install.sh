@@ -53,6 +53,7 @@ ${PIPCMD} install --user --upgrade gym
 ${PIPCMD} install --user --upgrade ffmpeg-python  # https://pypi.org/project/ffmpeg-python/
 ${PIPCMD} install --user --upgrade JSAnimation
 ${PIPCMD} install --user --upgrade torch torchvision
+${PIPCMD} install --user --upgrade imageio    #https://pypi.org/project/imageio/
 
 
 ####------------------------------------------------------------
