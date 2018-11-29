@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 TENSORFLOWGPU=true
-PIPCMD=/usr/bin/pip3
+PIPCMD=~/.local/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
 
 ##  Python3
@@ -10,6 +10,7 @@ sudo apt upgrade -y
 sudo apt install -y python3
 sudo apt install -y python3-dev
 sudo apt install -y python3-pip
+pip3 install --user --upgrade pip
 
 ##  install apt packages for some pip pacakges
 sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
@@ -76,6 +77,7 @@ ${PIPCMD} install --user --upgrade keras-tqdm
 ####----------------------------------------
 ${PIPCMD} install --user --upgrade cupy
 ${PIPCMD} install --user --upgrade chainer
+#${PIPCMD} install --user --upgrade chainermn
 
 ####------------------------------------------------------------
 ####  SQL
