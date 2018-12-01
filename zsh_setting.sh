@@ -3,10 +3,11 @@
 
 #--------------------------------------------------------------------------------
 #  zsh
-##--------------------
+####################
 sudo apt install -y zsh
-##--------------------
-##  set zsh as login shell
+#  chshでのパスワード要求を省略
+sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh
+#  set zsh as login shell
 chsh -s $(which zsh)
 
 
