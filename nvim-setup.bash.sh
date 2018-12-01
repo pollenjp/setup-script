@@ -1,10 +1,12 @@
 #!/bin/bash -eux
 
+PIPCMD=${HOME}/.local/bin/pip3
+
 # python3
-sudo apt install -y python3
-sudo apt install -y python3-dev
-sudo apt install -y python3-pip
-pip3 install --user --upgrade neovim
+#sudo apt install -y python3
+#sudo apt install -y python3-dev
+#sudo apt install -y python3-pip
+${PIPCMD} install --user --upgrade neovim
 
 ####################################################################################################
 #  install neovim

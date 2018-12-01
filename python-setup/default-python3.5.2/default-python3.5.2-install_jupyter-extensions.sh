@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
-PIPCMD=/usr/bin/pip3
-JUPYTERCMD=~/.local/bin/jupyter
+PIPCMD=${HOME}/.local/bin/pip3
+JUPYTERCMD=${HOME}/.local/bin/jupyter
 
 ##  If there are root owner files under ~/.local, pip command probably does not work.
 if [ ! -d ${HOME}/.local ]; then
