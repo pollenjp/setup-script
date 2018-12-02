@@ -1,4 +1,6 @@
-#!/bin/bash -eux
+#!/usr/bin/zsh -eux
+# zshで実行する必要がある。
+source ${HOME}/.zshrc
 
 TENSORFLOWGPU=true
 PIPCMD=~/.local/bin/pip3
