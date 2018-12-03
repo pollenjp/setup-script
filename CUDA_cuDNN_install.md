@@ -12,6 +12,9 @@
   - [Membership Required | NVIDIA Developer](https://developer.nvidia.com/rdp/cudnn-download) (要メンバー登録)
 
 - [CUDA 9.0とcuDNN 7.0をUbuntu 16.04LTSにインストールする - Qiita](https://qiita.com/JeJeNeNo/items/b30597918db3781e20cf)
+  - cuDNN v7.0.x Runtime Library for Ubuntu16.04 (Deb)
+  - cuDNN v7.0.x Developer Library for Ubuntu16.04 (Deb)
+  - cuDNN v7.0.x Code Samples and User Guide for Ubuntu16.04 (Deb)
 - [Ubuntu 16.04へのCUDAインストール方法 - Qiita](https://qiita.com/yukoba/items/3692f1cb677b2383c983)
 - [TensorFlowをソースからビルドする方法とその効果 | 株式会社カブク](https://www.kabuku.co.jp/developers/tensorflow_source_build)
 
