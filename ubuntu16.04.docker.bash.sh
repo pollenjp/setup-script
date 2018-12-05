@@ -22,10 +22,11 @@ sudo apt install -y nkf
 sudo apt install -y less
 
 ########################################
-###  OpenGL
-###    - https://medium.com/@Plimsky/how-to-install-a-opengl-environment-on-ubuntu-e3918cf5ab6c
+#  OpenGL
+#    - https://medium.com/@Plimsky/how-to-install-a-opengl-environment-on-ubuntu-e3918cf5ab6c
 sudo apt-get install -y libx11-dev xorg-dev freeglut3-dev libglew1.5 libglew1.5-dev \
                         libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev
+
 
 ####################################################################################################
 #  Others
