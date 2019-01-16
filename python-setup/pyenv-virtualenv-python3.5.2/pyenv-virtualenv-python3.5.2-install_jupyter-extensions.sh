@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/usr/bin/zsh -eux
 
 VENV_NAME=my3.5.2
 PIPCMD=pip3
@@ -10,6 +10,7 @@ JUPYTERCMD=${HOME}/.pyenv/versions/${VENV_NAME}/bin/jupyter
 #fi
 #sudo chown -R ${USER} ${HOME}/.local
 
+${PIPCMD} install --upgrade pip
 ${PIPCMD} install --upgrade jupyter
 
 ####------------------------------------------------------------
