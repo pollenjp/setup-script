@@ -30,6 +30,7 @@ ${PIPCMD} install --upgrade pgspecial    # for posgresql : https://pypi.org/proj
 #####  setting
 #####------------------------------
 #####    - https://github.com/ipython-contrib/jupyter_contrib_nbextensions
+# - https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html#install-javascript-and-css-files
 ${JUPYTERCMD} contrib nbextension install --sys-prefix
 
 #####------------------------------
