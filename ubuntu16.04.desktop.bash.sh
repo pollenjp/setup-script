@@ -96,27 +96,6 @@ sudo apt install -y gdebi
 ###----------------------------------------
 sudo apt install -y net-tools
 
-#----------------------------------------------------------------------------------------------------
-#  Other Shell Script
-####################
-#  Git
-./git-setup.sh
-####################
-#  Screen
-./screen_setting.sh
-####################
-##  zsh
-##--------------------
-./zsh_setting.sh
-
-####################
-#./python_install.sh
-####################
-#  nvim
-#./nvim_set.sh
-
-
-
 #=======================================
 # Python
 # [pyenv Ubuntu16.04 ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib? - Qiita](https://qiita.com/pollenjp/items/965b5a0dc95d7572cf41)
@@ -134,6 +113,5 @@ sudo apt-get install -y \
                         libsqlite3-dev \
                         python-pysqlite2 \
                         python-pysqlite2-dbg
-
 
 
