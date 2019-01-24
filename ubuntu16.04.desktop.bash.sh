@@ -12,22 +12,26 @@
 # apt package
 #----------------------------------------------------------------------------------------------------
 
-##--------------------------------------------------------------------------------
-## General
-##--------------------------------------------------------------------------------
+#===============================================================================
+# General
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
 
-###----------------------------------------
+#=======================================
+# Fonts
+sudo apt install -y fonts-vlgothic
+
+#=======================================
 sudo apt install -y curl
 sudo apt install -y tree
-###----------------------------------------
-###  compizconfig-settings-manager
-###    - zoom in out
-###      - https://superuser.com/questions/1273854/how-to-zoom-in-out-desktop-icons-on-ubuntu-16-04
+
+#=======================================
+#  compizconfig-settings-manager
+#    - zoom in out
+#      - https://superuser.com/questions/1273854/how-to-zoom-in-out-desktop-icons-on-ubuntu-16-04
 sudo apt install -y compizconfig-settings-manager
-###  "gnome-open ."
+#  "gnome-open ."
 sudo apt install -y libgnome2-bin
 ###  asembler nasm
 sudo apt install -y nasm
@@ -92,27 +96,22 @@ sudo apt install -y gdebi
 ###----------------------------------------
 sudo apt install -y net-tools
 
-#----------------------------------------------------------------------------------------------------
-#  Other Shell Script
-####################
-#  Git
-./git-setup.sh
-####################
-#  Screen
-./screen_setting.sh
-####################
-##  zsh
-##--------------------
-./zsh_setting.sh
-####################
+#=======================================
 # Python
-####################
-#./python_install.sh
-####################
-#  nvim
-#./nvim_set.sh
-
-
-
+# [pyenv Ubuntu16.04 ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib? - Qiita](https://qiita.com/pollenjp/items/965b5a0dc95d7572cf41)
+sudo apt-get install -y \
+                        libbz2-dev \
+                        libncurses5-dev \
+                        libgdbm-dev \
+                        liblzma-dev \
+                        libssl-dev \
+                        tcl-dev \
+                        tk-dev \
+                        libreadline-dev \
+                        sqlite \
+                        sqlite3  \
+                        libsqlite3-dev \
+                        python-pysqlite2 \
+                        python-pysqlite2-dbg
 
 
