@@ -61,12 +61,12 @@ done
 RC_FILE=~/.bashrc
 echo -e "## CUDA and cuDNN paths"  >> ${RC_FILE}
 echo 'export PATH=/usr/local/cuda-9.0/bin:${PATH}' >> ${rc_file}
-echo 'export ld_library_path=/usr/local/cuda-9.0/lib64:${ld_library_path}' >> ${rc_file}
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}' >> ${rc_file}
 source ${RC_FILE}
 #    - .zshrc
 RC_FILE=~/.zshrc
 echo -e "## CUDA and cuDNN paths"  >> ${RC_FILE}
 echo 'export PATH=/usr/local/cuda-9.0/bin:${PATH}' >> ${rc_file}
-echo 'export ld_library_path=/usr/local/cuda-9.0/lib64:${ld_library_path}' >> ${rc_file}
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:${LD_LIBRARY_PATH}' >> ${rc_file}
 source ${RC_FILE}
 
