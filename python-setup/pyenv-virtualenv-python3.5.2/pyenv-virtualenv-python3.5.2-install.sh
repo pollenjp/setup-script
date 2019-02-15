@@ -44,6 +44,7 @@ ${PIPCMD} install --upgrade pandas
 ${PIPCMD} install --upgrade seaborn
 ${PIPCMD} install --upgrade jupyter
 ${PIPCMD} install --upgrade opencv-python
+${PIPCMD} install --upgrade opencv-contrib-python<Paste>
 ${PIPCMD} install --upgrade tifffile
 ${PIPCMD} install --upgrade pydot
 ${PIPCMD} install --upgrade graphviz

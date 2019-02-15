@@ -1,4 +1,4 @@
-#!/usr/bin/zsh -eux
+#!/bin/zsh -eux
 
 VENV_NAME=my3.5.2
 PIPCMD=pip3

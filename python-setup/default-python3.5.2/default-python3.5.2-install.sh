@@ -2,7 +2,6 @@
 # zshで実行する必要がある。
 source ${HOME}/.zshrc
 
-TENSORFLOWGPU=true
 PIPCMD=~/.local/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
 
@@ -44,6 +43,7 @@ ${PIPCMD} install --user --upgrade pandas
 ${PIPCMD} install --user --upgrade seaborn
 ${PIPCMD} install --user --upgrade jupyter
 ${PIPCMD} install --user --upgrade opencv-python
+${PIPCMD} install --user --upgrade opencv-contrib-python
 ${PIPCMD} install --user --upgrade tifffile
 ${PIPCMD} install --user --upgrade pydot
 ${PIPCMD} install --user --upgrade graphviz
@@ -66,7 +66,7 @@ ${PIPCMD} install --user --upgrade imageio    #https://pypi.org/project/imageio/
 ####  - tensorflow
 ####  - tensorflow-gpu
 ####  - https://github.com/bstriner/keras-tqdm
-if [ "$TENSORFLOWGPU" = true ]; then
+if [ "$GPU" = true ]; then
     ${PIPCMD} install --user --upgrade tensorflow-gpu
 else
     ${PIPCMD} install --user --upgrade tensorflow
@@ -77,7 +77,10 @@ ${PIPCMD} install --user --upgrade keras-tqdm
 ####----------------------------------------
 ####  Chainer / cupy
 ####----------------------------------------
-${PIPCMD} install --user --upgrade cupy
+printf $GPU
+if [ "$GPU" = true ]; then
+    ${PIPCMD} install --user --upgrade cupy
+fi
 ${PIPCMD} install --user --upgrade chainer
 #${PIPCMD} install --user --upgrade chainermn
 
