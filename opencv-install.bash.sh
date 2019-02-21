@@ -72,6 +72,9 @@ if [ -d "${directory1}" ] && [ -z ${NOTCLEAN+x} ]; then
   rm -rf ${directory1}
   mkdir ${directory1}
 fi
+if [ ! -d "${directory1}" ]; then
+  mkdir ${directory1}
+fi
 cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
