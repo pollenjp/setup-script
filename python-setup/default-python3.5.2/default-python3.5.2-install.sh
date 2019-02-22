@@ -1,10 +1,16 @@
-#!/usr/bin/zsh -eux
-# zshで実行する必要がある。
-source ${HOME}/.zshrc
+#!/usr/bin/zsh -eu
 
-TENSORFLOWGPU=true
+########################################
+#  Parameter
+#    - https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
+#    - https://stackoverflow.com/a/14203146/9316234
+GPU_USE=true  # true or not
 PIPCMD=~/.local/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
+########################################
+
+
+source ${HOME}/.zshrc
 
 ##  Python3
 sudo apt update -y 
@@ -66,7 +72,7 @@ ${PIPCMD} install --user --upgrade imageio    #https://pypi.org/project/imageio/
 ####  - tensorflow
 ####  - tensorflow-gpu
 ####  - https://github.com/bstriner/keras-tqdm
-if [ "$TENSORFLOWGPU" = true ]; then
+if [ ${GPU} = true ]; then
     ${PIPCMD} install --user --upgrade tensorflow-gpu
 else
     ${PIPCMD} install --user --upgrade tensorflow
@@ -77,7 +83,9 @@ ${PIPCMD} install --user --upgrade keras-tqdm
 ####----------------------------------------
 ####  Chainer / cupy
 ####----------------------------------------
-${PIPCMD} install --user --upgrade cupy
+if [ ${GPU} = true ]; then
+    ${PIPCMD} install --user --upgrade cupy
+fi
 ${PIPCMD} install --user --upgrade chainer
 #${PIPCMD} install --user --upgrade chainermn
 
