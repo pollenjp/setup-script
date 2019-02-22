@@ -1,6 +1,6 @@
-#!/bin/zsh -eux
+#!/bin/bash -eux
 
-VENV_NAME=my3.5.2
+VENV_NAME=Learning_OpenCV_Python
 PIPCMD=pip3
 JUPYTERCMD=${HOME}/.pyenv/versions/${VENV_NAME}/bin/jupyter
 
@@ -10,27 +10,12 @@ JUPYTERCMD=${HOME}/.pyenv/versions/${VENV_NAME}/bin/jupyter
 #fi
 #sudo chown -R ${USER} ${HOME}/.local
 
-${PIPCMD} install --upgrade pip
 ${PIPCMD} install --upgrade jupyter
 
-####------------------------------------------------------------
-####  Jupyter
-####------------------------------------------------------------
+#===============================================================================
+#  Jupyter
 ${PIPCMD} install --upgrade jupyter_contrib_nbextensions
-${PIPCMD} install --upgrade ipython-sql
-####------------------------------------------------------------
-####  SQL
-####------------------------------------------------------------
-####    - MySQL
-####    - PostgreSQL
-####      - https://pypi.org/project/pgspecial/
-${PIPCMD} install --upgrade ipython-sql  # sql
-${PIPCMD} install --upgrade psycopg2
-${PIPCMD} install --upgrade pgspecial    # for posgresql : https://pypi.org/project/pgspecial/
-#####------------------------------
-#####  setting
-#####------------------------------
-#####    - https://github.com/ipython-contrib/jupyter_contrib_nbextensions
+# - https://github.com/ipython-contrib/jupyter_contrib_nbextensions
 # - https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html#install-javascript-and-css-files
 ${JUPYTERCMD} contrib nbextension install --sys-prefix
 

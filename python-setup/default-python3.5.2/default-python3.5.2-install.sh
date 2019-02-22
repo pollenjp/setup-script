@@ -4,7 +4,7 @@
 #  Parameter
 #    - https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
 #    - https://stackoverflow.com/a/14203146/9316234
-GPU_USE=true  # true or not
+GPU=true  # true or not
 PIPCMD=~/.local/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
 ########################################
@@ -50,6 +50,7 @@ ${PIPCMD} install --user --upgrade pandas
 ${PIPCMD} install --user --upgrade seaborn
 ${PIPCMD} install --user --upgrade jupyter
 ${PIPCMD} install --user --upgrade opencv-python
+${PIPCMD} install --user --upgrade opencv-contrib-python
 ${PIPCMD} install --user --upgrade tifffile
 ${PIPCMD} install --user --upgrade pydot
 ${PIPCMD} install --user --upgrade graphviz

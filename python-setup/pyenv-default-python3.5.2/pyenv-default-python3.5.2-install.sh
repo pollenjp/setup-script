@@ -36,6 +36,7 @@ ${PIPCMD} install --user --upgrade pandas
 ${PIPCMD} install --user --upgrade seaborn
 ${PIPCMD} install --user --upgrade jupyter
 ${PIPCMD} install --user --upgrade opencv-python
+${PIPCMD} install --user --upgrade opencv-contrib-python
 ${PIPCMD} install --user --upgrade pydot
 ${PIPCMD} install --user --upgrade graphviz
 ${PIPCMD} install --user --upgrade jedi  # auto-completion

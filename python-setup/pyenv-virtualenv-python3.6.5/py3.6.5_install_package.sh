@@ -2,8 +2,9 @@
 # zshで実行する必要がある。
 source ${HOME}/.zshrc
 
-TENSORFLOWGPU=true
+TENSORFLOWGPU=false
 PIPCMD=pip3
+JUPYTERCMD=~/.local/bin/jupyter
 
 # TODO
 ##  Python3
@@ -12,7 +13,7 @@ PIPCMD=pip3
 #sudo apt install -y python3
 #sudo apt install -y python3-dev
 #sudo apt install -y python3-pip
-pip3 install --upgrade pip
+#pip3 install --user --upgrade pip
 
 ##  install apt packages for some pip pacakges
 sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
@@ -20,11 +21,11 @@ sudo apt install -y freetds-dev   # for pymssql
 sudo apt install -y python3-tk    # module named 'tkinter'
 sudo apt install -y ffmpeg        # ffmpeg-python - PyPI
 
-###  If there are root owner files under ~/.local, pip command probably does not work.
-#if [ ! -d ${HOME}/.local ]; then
-#    mkdir ${HOME}/.local
-#fi
-#sudo chown -R ${USER} ${HOME}/.local
+##  If there are root owner files under ~/.local, pip command probably does not work.
+if [ ! -d ${HOME}/.local ]; then
+    mkdir ${HOME}/.local
+fi
+sudo chown -R ${USER} ${HOME}/.local
 
 ###------------------------------------------------------------
 ### PyPI (Python package index)
@@ -44,7 +45,7 @@ ${PIPCMD} install --upgrade pandas
 ${PIPCMD} install --upgrade seaborn
 ${PIPCMD} install --upgrade jupyter
 ${PIPCMD} install --upgrade opencv-python
-${PIPCMD} install --upgrade opencv-contrib-python<Paste>
+${PIPCMD} install --upgrade opencv-contrib-python
 ${PIPCMD} install --upgrade tifffile
 ${PIPCMD} install --upgrade pydot
 ${PIPCMD} install --upgrade graphviz
@@ -60,7 +61,6 @@ ${PIPCMD} install --upgrade torch torchvision
 ${PIPCMD} install --upgrade imageio    #https://pypi.org/project/imageio/
 
 
-
 ####------------------------------------------------------------
 ####  TensorFlow / Keras
 ####------------------------------------------------------------
@@ -71,7 +71,7 @@ ${PIPCMD} install --upgrade imageio    #https://pypi.org/project/imageio/
 if [ "$TENSORFLOWGPU" = true ]; then
     ${PIPCMD} install --upgrade tensorflow-gpu
 else
-    ${PIPCMD} install --upgrade tensorflow
+    ${PIPCMD} install --user --upgrade tensorflow
 fi
 ${PIPCMD} install --upgrade keras
 ${PIPCMD} install --upgrade keras-tqdm
@@ -81,7 +81,7 @@ ${PIPCMD} install --upgrade keras-tqdm
 ####----------------------------------------
 ${PIPCMD} install --upgrade cupy
 ${PIPCMD} install --upgrade chainer
-#${PIPCMD} install --upgrade chainermn
+#${PIPCMD} install --user --upgrade chainermn
 
 
 ####------------------------------------------------------------

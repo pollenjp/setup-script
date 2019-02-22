@@ -97,21 +97,24 @@ sudo apt install -y gdebi
 sudo apt install -y net-tools
 
 #=======================================
-# Python
-# [pyenv Ubuntu16.04 ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib? - Qiita](https://qiita.com/pollenjp/items/965b5a0dc95d7572cf41)
+# pyenv
+# [Prerequisites](https://github.com/pyenv/pyenv/wiki/common-build-problems#prerequisites)
 sudo apt-get install -y \
-                        libbz2-dev \
-                        libncurses5-dev \
-                        libgdbm-dev \
-                        liblzma-dev \
+                        make \
+                        build-essential \
                         libssl-dev \
-                        tcl-dev \
-                        tk-dev \
+                        zlib1g-dev \
+                        libbz2-dev \
                         libreadline-dev \
-                        sqlite \
-                        sqlite3  \
                         libsqlite3-dev \
-                        python-pysqlite2 \
-                        python-pysqlite2-dbg
-
+                        wget \
+                        curl \
+                        llvm \
+                        libncurses5-dev \
+                        libncursesw5-dev \
+                        xz-utils \
+                        tk-dev \
+                        libffi-dev \
+                        liblzma-dev \
+                        python-openssl
 
