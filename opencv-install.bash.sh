@@ -4,9 +4,9 @@
 # [memo on hackmd.io](https://hackmd.io/MVHtNQarSouT_b9H9yAa_w)
 
 
-#OPNECV_VERSION=4.0.0
+#OPENCV_VERSION=4.0.0
 #NOTCLEAN  # flag : buildディレクトリルが存在していればそれを使う
-CMAKE_INSTALL_PREFIX=${HOME}/.opencv/installation/OpenCV-${OPNECV_VERSION}
+CMAKE_INSTALL_PREFIX=${HOME}/.opencv/install/OpenCV-${OPENCV_VERSION}
 
 # current working directory
 CWD=$(pwd)
@@ -26,7 +26,7 @@ if [ ! -d "${directory1}" ]; then
 fi
 
 cd opencv
-git checkout ${OPNECV_VERSION}
+git checkout ${OPENCV_VERSION}
 cd ..
  
 #===================
@@ -36,7 +36,7 @@ if [ ! -d "${directory1}" ]; then
   git clone https://github.com/opencv/opencv_contrib.git
 fi
 cd opencv_contrib
-git checkout ${OPNECV_VERSION}
+git checkout ${OPENCV_VERSION}
 cd ..
 
 

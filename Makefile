@@ -1,7 +1,7 @@
 ROOT := $(shell echo "$(shell pwd)")
+OPENCV_VERSION :=
 
-
-################################################################################
+#===============================================================================
 .PHONY : ubuntu16.04-desktop-cpu
 ubuntu16.04-desktop-cpu :  ## TODO
 	${ROOT}/ubuntu16.04.desktop.bash.sh
@@ -18,7 +18,7 @@ ubuntu16.04-desktop-gpu :  ## TODO
 ubuntu18.04-desktop-cpu :  ## TODO
 	echo "pass"
 
-################################################################################
+#===============================================================================
 ubuntu18.04-desktop-gpu :  ## TODO
 	echo "pass"
 
@@ -40,6 +40,15 @@ ubuntu16.04-docker-gpu :  ## TODO
 ubuntu16.04-docker-opengl-gpu :  ## TODO
 	echo "pass"
 
+
+#===============================================================================
+# INSTALL
+.PHONY : install-opencv 
+install-opencv :  ##  install OPENCV spesify variable. ex: OPENCV_VERSION=4.0.1
+	OPENCV_VERSION=${OPENCV_VERSION} ./opencv-install.bash.sh
+
+
+#===============================================================================
 .PHONY: help
 help :  ## TODO
 	echo "pass"
