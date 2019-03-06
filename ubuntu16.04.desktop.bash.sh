@@ -47,7 +47,10 @@ sudo apt install -y texmaker
 #  install "software-properties-common" for "add-apt-repository" command
 #    - https://www.itzgeek.com/how-tos/mini-howtos/add-apt-repository-command-not-found-debian-ubuntu-quick-fix.html
 sudo apt-get install -y software-properties-common
-
+# (Ubuntu18.04では手動でインストールが必要) system-monitor (gnome-system-monitor)
+#sudo apt-get install -y gnome-shell-extension-system-monitor
+# [software recommendation - How can I add the current CPU usage to my menu bar as a percentage? - Ask Ubuntu](https://askubuntu.com/a/907807/807051)
+sudo apt-get install -y indicator-multiload
 
 ##--------------------------------------------------------------------------------
 ##  application
