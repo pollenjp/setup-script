@@ -79,8 +79,15 @@ sudo apt install -y qemu
 ###  OpenGL
 ###----------------------------------------
 ###    - https://medium.com/@Plimsky/how-to-install-a-opengl-environment-on-ubuntu-e3918cf5ab6c
-sudo apt-get install -y libx11-dev xorg-dev freeglut3-dev libglew1.5 libglew1.5-dev \
-                        libglu1-mesa libglu1-mesa-dev libgl1-mesa-glx libgl1-mesa-dev
+sudo apt-get install -y libx11-dev \
+                        xorg-dev \
+                        libgl1-mesa-glx \
+                        libgl1-mesa-dev
+                        #freeglut3-dev \
+                        #libglew1.5 \
+                        #libglew1.5-dev \
+                        #libglu1-mesa \
+                        #libglu1-mesa-dev \
 ## install cmake --> see another script
 
 ###--------------------
@@ -88,7 +95,7 @@ sudo apt-get install -y libx11-dev xorg-dev freeglut3-dev libglew1.5 libglew1.5-
 ###--------------------
 ###  How can I install Unity 3D game engine for Ubuntu? - askubuntu
 ###    - https://askubuntu.com/questions/957991/how-can-i-install-unity-3d-game-engine-for-ubuntu/1017062
-sudo apt install -y gdebi
+#sudo apt install -y gdebi
 
 
 ##--------------------------------------------------------------------------------

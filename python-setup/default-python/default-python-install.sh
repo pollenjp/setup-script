@@ -4,13 +4,10 @@
 #  Parameter
 #    - https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts
 #    - https://stackoverflow.com/a/14203146/9316234
-GPU=true  # true or not
+#GPU=true  # true or not (this should be commented out.)
 PIPCMD=~/.local/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
 ########################################
-
-
-source ${HOME}/.zshrc
 
 ##  Python3
 sudo apt update -y 
@@ -73,7 +70,8 @@ ${PIPCMD} install --user --upgrade imageio    #https://pypi.org/project/imageio/
 ####  - tensorflow
 ####  - tensorflow-gpu
 ####  - https://github.com/bstriner/keras-tqdm
-if [ ${GPU} = true ]; then
+printf "\e[42m GPU is ${GPU} \e[0m \n"
+if [ "${GPU}" = "true" ]; then
     ${PIPCMD} install --user --upgrade tensorflow-gpu
 else
     ${PIPCMD} install --user --upgrade tensorflow
