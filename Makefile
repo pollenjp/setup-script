@@ -1,9 +1,10 @@
+SHELL := /bin/bash
+
 ROOT := $(shell echo "$(shell pwd)")
 PENCV_VERSION :=
 
 # true or not
 GPU :=
-
 ERROR_MESSAGE :=
 
 export
