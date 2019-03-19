@@ -1,7 +1,9 @@
 #!/bin/bash -eux
 
-VENV_NAME=Learning_OpenCV_Python
-PIPCMD=pip3
+# [bash - What's a concise way to check that environment variables are set in a Unix shell script? - Stack Overflow](https://stackoverflow.com/a/307735/9316234)
+: "${VENV_NAME:?Need to set VENV_NAME non-empty (ex: '$ VENV_NAME=your-pyenv-version ./shellscript.sh')}"
+
+PIPCMD=${HOME}/.pyenv/versions/${VENV_NAME}/bin/pip3
 JUPYTERCMD=${HOME}/.pyenv/versions/${VENV_NAME}/bin/jupyter
 
 ##  If there are root owner files under ~/.local, pip command probably does not work.
