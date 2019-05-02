@@ -15,7 +15,11 @@ sudo apt upgrade -y
 sudo apt install -y python3
 sudo apt install -y python3-dev
 sudo apt install -y python3-pip
-pip3 install --user --upgrade pip
+if [ -f ${PIPCMD} ]; then
+    ${PIPCMD} install --user --upgrade pip
+else
+    /usr/bin/pip3 install --user --upgrade pip
+fi
 
 ##  install apt packages for some pip pacakges
 sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
@@ -87,16 +91,6 @@ if [ ${GPU} = true ]; then
 fi
 ${PIPCMD} install --user --upgrade chainer
 #${PIPCMD} install --user --upgrade chainermn
-
-####------------------------------------------------------------
-####  SQL
-####------------------------------------------------------------
-####    - MySQL
-####    - PostgreSQL
-####      - https://pypi.org/project/pgspecial/
-${PIPCMD} install --user --upgrade ipython-sql  # sql
-${PIPCMD} install --user --upgrade psycopg2
-${PIPCMD} install --user --upgrade pgspecial    # for posgresql : https://pypi.org/project/pgspecial/
 
 ####------------------------------------------------------------
 ####  for NeoVim
