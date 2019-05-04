@@ -3,7 +3,7 @@ SHELL := /bin/bash
 ROOT := $(shell echo "$(shell pwd)")
 PENCV_VERSION :=
 
-# true or not
+# 'true' or 'false'
 GPU :=
 ERROR_MESSAGE :=
 
@@ -14,7 +14,7 @@ export
 preprocess :
 # [Bash - adding color - NoskeWiki printf zsh](http://www.andrewnoske.com/wiki/Bash_-_adding_color)
 ifndef GPU
-	@printf "\e[101m Variable GPU does not set. \e[0m \n"
+	@printf "\e[101m %s \e[0m \n" "Variable GPU does not set. ('true' or 'false')"
 	@${MAKE} error ERROR_MESSAGE="GPU"
 endif
 
