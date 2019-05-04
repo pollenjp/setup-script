@@ -1,5 +1,6 @@
 #!/bin/bash -eux
 
+DOTFILES_REPOS=git@bitbucket.org:pollenjp/dotfiles.git
 
 ####################################################################################################
 #  zsh
@@ -18,7 +19,7 @@ cd $HOME
 ##  dotfiles
 directory1="${HOME}/dotfiles"
 if [ ! -d "${directory1}" ]; then
-  git clone git@bitbucket.org:pollenjp/dotfiles.git
+  git clone ${DOTFILES_REPOS}
 fi
 
 ########################################

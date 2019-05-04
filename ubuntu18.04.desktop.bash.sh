@@ -24,7 +24,8 @@ sudo apt install -y texlive-full
 # (Ubuntu18.04では手動でインストールが必要) system-monitor (gnome-system-monitor)
 sudo apt install -y gnome-shell-extension-system-monitor
 # [software recommendation - How can I add the current CPU usage to my menu bar as a percentage? - Ask Ubuntu](https://askubuntu.com/a/907807/807051)
-sudo apt install -y indicator-multiload
+# you must commet out this line.
+#sudo apt install -y indicator-multiload
 
 sudo apt install -y libx11-dev \
                     xorg-dev \

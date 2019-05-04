@@ -5,6 +5,8 @@
 #  ```
 #  - https://stackoverflow.com/a/1509764/9316234
 
+DOTFILES_REPOS=git@bitbucket.org:pollenjp/dotfiles.git
+
 sudo apt install -y screen
 
 ##--------------------
@@ -12,7 +14,7 @@ sudo apt install -y screen
 ##--------------------
 directory1="${HOME}/dotfiles"
 if [ ! -d "${directory1}" ]; then
-  git clone git@bitbucket.org:pollenjp/dotfiles.git ${directory1}
+  git clone ${DOTFILES_REPOS}
 fi
 
 ##--------------------
