@@ -1,31 +1,22 @@
-#!/usr/bin/zsh -eux
-# zshで実行する必要がある。
-source ${HOME}/.zshrc
+#!/bin/zsh -eux
 
-TENSORFLOWGPU=false
-PIPCMD=pip3
-JUPYTERCMD=~/.local/bin/jupyter
+# [bash - What's a concise way to check that environment variables are set in a Unix shell script? - Stack Overflow](https://stackoverflow.com/a/307735/9316234)
+: "${VENV_NAME:?Need to set VENV_NAME non-empty (ex: '$ VENV_NAME=your-pyenv-version ./shellscript.sh')}"
+: "${TENSORFLOWGPU:?Need to set TENSORFLOWGPU as true or false (ex: '$ TENSORFLOWGPU=false ./shellscript.sh')}"
 
-# TODO
-##  Python3
-#sudo apt update -y 
-#sudo apt upgrade -y 
-#sudo apt install -y python3
-#sudo apt install -y python3-dev
-#sudo apt install -y python3-pip
-#pip3 install --user --upgrade pip
+PIPCMD=${HOME}/.pyenv/versions/${VENV_NAME}/bin/pip3
 
 ##  install apt packages for some pip pacakges
-sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
-sudo apt install -y freetds-dev   # for pymssql
-sudo apt install -y python3-tk    # module named 'tkinter'
-sudo apt install -y ffmpeg        # ffmpeg-python - PyPI
+#sudo apt install -y graphviz libgraphviz-dev  # graphviz is needed for keras.utils.vis_model.plot_model
+#sudo apt install -y freetds-dev   # for pymssql
+#sudo apt install -y python3-tk    # module named 'tkinter'
+#sudo apt install -y ffmpeg        # ffmpeg-python - PyPI
 
 ##  If there are root owner files under ~/.local, pip command probably does not work.
-if [ ! -d ${HOME}/.local ]; then
-    mkdir ${HOME}/.local
-fi
-sudo chown -R ${USER} ${HOME}/.local
+#if [ ! -d ${HOME}/.local ]; then
+#    mkdir ${HOME}/.local
+#fi
+#sudo chown -R ${USER} ${HOME}/.local
 
 ###------------------------------------------------------------
 ### PyPI (Python package index)
@@ -40,7 +31,7 @@ ${PIPCMD} install --upgrade numpy
 ${PIPCMD} install --upgrade scipy
 ${PIPCMD} install --upgrade cython
 ${PIPCMD} install --upgrade scikit-learn
-${PIPCMD} install --upgrade scikit-image 
+${PIPCMD} install --upgrade scikit-image
 ${PIPCMD} install --upgrade pandas
 ${PIPCMD} install --upgrade seaborn
 ${PIPCMD} install --upgrade jupyter
@@ -68,13 +59,17 @@ ${PIPCMD} install --upgrade imageio    #https://pypi.org/project/imageio/
 ####  - tensorflow
 ####  - tensorflow-gpu
 ####  - https://github.com/bstriner/keras-tqdm
-if [ "$TENSORFLOWGPU" = true ]; then
-    ${PIPCMD} install --upgrade tensorflow-gpu
-else
-    ${PIPCMD} install --user --upgrade tensorflow
+if [ "$TENSORFLOWGPU" = true ] || [ "$TENSORFLOWGPU" = false ]; then
+    if [ "$TENSORFLOWGPU" = true ]; then
+        ${PIPCMD} install --upgrade tensorflow-gpu
+    elif [ "$TENSORFLOWGPU" = false ]; then
+        ${PIPCMD} install --upgrade tensorflow
+    fi
+    ${PIPCMD} install --upgrade keras
+    ${PIPCMD} install --upgrade keras-tqdm
+#else
+#    do nothing
 fi
-${PIPCMD} install --upgrade keras
-${PIPCMD} install --upgrade keras-tqdm
 
 ####----------------------------------------
 ####  Chainer / cupy

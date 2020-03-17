@@ -41,17 +41,21 @@ if [ ! -d vim_binding ]; then
 fi
 ${JUPYTERCMD} nbextension enable vim_binding/vim_binding
 cd ${CWD}
-######--------------------
-######  toggle_all_line_numbers
+
+######################
+# Jupyter Extensions #
+######################
+
+#  toggle_all_line_numbers
 ${JUPYTERCMD} nbextension enable toggle_all_line_numbers/main
-######  execute_time
+#  execute_time
 ${JUPYTERCMD} nbextension enable execute_time/ExecuteTime
-######  Table of Contents (2)
+#  Table of Contents (2)
 ${JUPYTERCMD} nbextension enable toc2/main
-#       ipywidget
-#         - https://ipywidgets.readthedocs.io/en/latest/user_install.html#installing-the-jupyterlab-extension
+# ipywidget
+#   - https://ipywidgets.readthedocs.io/en/latest/user_install.html#installing-the-jupyterlab-extension
 ${JUPYTERCMD} nbextension enable --py widgetsnbextension
-#       nbextensions
+# nbextensions
 #${JUPYTERCMD} nbextension enable nbextensions_configurator/tree_tab/main
 
 
