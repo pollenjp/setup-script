@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 PIPCMD=${HOME}/.local/bin/pip3
-DOTFILES_REPOS=git@bitbucket.org:pollenjp/dotfiles.git
+DOTFILES_REPOS=git@github.com:pollenjp/dotfiles.git
 
 # python3
 #sudo apt install -y python3
