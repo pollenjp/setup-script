@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-DOTFILES_REPOS=git@bitbucket.org:pollenjp/dotfiles.git
+DOTFILES_REPOS=git@github.com:pollenjp/dotfiles.git
 
 ####################################################################################################
 #  zsh

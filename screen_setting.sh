@@ -5,7 +5,7 @@
 #  ```
 #  - https://stackoverflow.com/a/1509764/9316234
 
-DOTFILES_REPOS=git@bitbucket.org:pollenjp/dotfiles.git
+DOTFILES_REPOS=git@github.com:pollenjp/dotfiles.git
 
 sudo apt install -y screen
 
