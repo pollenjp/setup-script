@@ -7,6 +7,7 @@
 #GPU=true  # true or not (this should be commented out.)
 PIPCMD=~/.local/bin/pip3
 JUPYTERCMD=~/.local/bin/jupyter
+SYSTEM_PIPCMD=/usr/bin/pip3
 ########################################
 
 ##  Python3
@@ -18,7 +19,7 @@ sudo apt install -y python3-pip
 if [ -f ${PIPCMD} ]; then
     ${PIPCMD} install --user --upgrade pip
 else
-    /usr/bin/pip3 install --user --upgrade pip
+    ${SYSTEM_PIPCMD} install --user --upgrade pip
 fi
 
 ##  install apt packages for some pip pacakges
@@ -45,76 +46,26 @@ ${PIPCMD} install --user --upgrade setuptools
 ${PIPCMD} install --user --upgrade numpy
 ${PIPCMD} install --user --upgrade scipy
 ${PIPCMD} install --user --upgrade cython
-${PIPCMD} install --user --upgrade scikit-learn
-${PIPCMD} install --user --upgrade scikit-image 
-${PIPCMD} install --user --upgrade pandas
-${PIPCMD} install --user --upgrade seaborn
-${PIPCMD} install --user --upgrade jupyter
-${PIPCMD} install --user --upgrade opencv-python
-${PIPCMD} install --user --upgrade opencv-contrib-python
 ${PIPCMD} install --user --upgrade tifffile
 ${PIPCMD} install --user --upgrade pydot
 ${PIPCMD} install --user --upgrade graphviz
 ${PIPCMD} install --user --upgrade jedi  # auto-completion
 ${PIPCMD} install --user --upgrade "dask[complete]"
-${PIPCMD} install --user --upgrade ray
-${PIPCMD} install --user --upgrade cookiecutter  # https://qiita.com/Hironsan/items/4479bdb13458249347a1
-${PIPCMD} install --user --upgrade py4j
-${PIPCMD} install --user --upgrade gym
 ${PIPCMD} install --user --upgrade ffmpeg-python  # https://pypi.org/project/ffmpeg-python/
 ${PIPCMD} install --user --upgrade JSAnimation
-${PIPCMD} install --user --upgrade torch torchvision
 ${PIPCMD} install --user --upgrade imageio    #https://pypi.org/project/imageio/
 
-
-####------------------------------------------------------------
-####  TensorFlow / Keras
-####------------------------------------------------------------
-####    - https://www.tensorflow.org/install/
-####  - tensorflow
-####  - tensorflow-gpu
-####  - https://github.com/bstriner/keras-tqdm
-printf "\e[42m GPU is ${GPU} \e[0m \n"
-if [ "${GPU}" = "true" ]; then
-    ${PIPCMD} install --user --upgrade tensorflow-gpu
-else
-    ${PIPCMD} install --user --upgrade tensorflow
-fi
-${PIPCMD} install --user --upgrade keras
-${PIPCMD} install --user --upgrade keras-tqdm
-
-####----------------------------------------
-####  Chainer / cupy
-####----------------------------------------
-if [ ${GPU} = true ]; then
-    ${PIPCMD} install --user --upgrade cupy
-fi
-${PIPCMD} install --user --upgrade chainer
-#${PIPCMD} install --user --upgrade chainermn
 
 ####------------------------------------------------------------
 ####  for NeoVim
 ####------------------------------------------------------------
 ${PIPCMD} install --user --upgrade neovim
 
-####------------------------------------------------------------
-####  Jupyter
-####------------------------------------------------------------
-${PIPCMD} install --user --upgrade jupyter_contrib_nbextensions
-${PIPCMD} install --user --upgrade ipython-sql
-#####------------------------------
-#####  setting
-#####------------------------------
-#####    - https://github.com/ipython-contrib/jupyter_contrib_nbextensions
-${JUPYTERCMD} contrib nbextension install --user
-
-
 ##--------------------------------------------------------------------------------
 ##  Python2
 ##--------------------------------------------------------------------------------
-sudo apt update -y 
-sudo apt upgrade -y 
-sudo apt install -y python
-sudo apt install -y python-dev
-sudo apt install -y python-pip
-
+# sudo apt update -y 
+# sudo apt upgrade -y 
+# sudo apt install -y python
+# sudo apt install -y python-dev
+# sudo apt install -y python-pip
