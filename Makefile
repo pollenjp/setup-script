@@ -84,7 +84,6 @@ ubuntu16.04-docker :
 	${MAKE} install-git
 	${MAKE} install-screen
 	${MAKE} install-zsh
-	pyenv global system
 	${MAKE} install-python-default
 	${MAKE} install-nvim
 	exec zsh
