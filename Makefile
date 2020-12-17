@@ -62,7 +62,7 @@ install-zsh :
 .PHONY : install-python-default
 install-python-default :
 	GPU=${GPU} ${ROOT}/python-setup/default-python/default-python-install.sh
-	${ROOT}/python-setup/default-python/default-python-jupyter-install.sh
+	# ${ROOT}/python-setup/default-python/default-python-jupyter-install.sh
 
 .PHONY : install-pyenv
 install-pyenv :
@@ -84,7 +84,6 @@ ubuntu16.04-docker :
 	${MAKE} install-git
 	${MAKE} install-screen
 	${MAKE} install-zsh
-	pyenv global system
 	${MAKE} install-python-default
 	${MAKE} install-nvim
 	exec zsh
