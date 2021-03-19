@@ -2,6 +2,7 @@ SHELL := /bin/bash
 
 ROOT := $(shell echo "$(shell pwd)")
 PENCV_VERSION :=
+COMMAND_DIR_PATH := ${ROOT}/install_and_setup
 
 # 'true' or 'false'
 GPU :=
@@ -49,20 +50,32 @@ ubuntu18.04-desktop :
 
 .PHONY : install-git
 install-git :
-	${ROOT}/git-setup.bash.sh
+	sudo apt install -y git
+	${COMMAND_DIR_PATH}/git-setup.bash.sh
 
 .PHONY : install-screen
 install-screen :
-	${ROOT}/screen_setting.sh
+	sudo apt install -y screen
+	${COMMAND_DIR_PATH}/screen-setup.bash.sh
 
 .PHONY : install-zsh
 install-zsh :
-	${ROOT}/zsh_setting.sh
+	sudo apt install -y zsh
+	# chshでのパスワード要求を省略
+	sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh
+	# set zsh as login shell
+	chsh -s /usr/bin/zsh
+	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
 
 .PHONY : install-python-default
 install-python-default :
-	GPU=${GPU} ${ROOT}/python-setup/default-python/default-python-install.sh
-	# ${ROOT}/python-setup/default-python/default-python-jupyter-install.sh
+	sudo apt update -y 
+	sudo apt upgrade -y 
+	sudo apt install -y \
+		python3 \
+		python3-dev \
+		python3-pip
+	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
 
 .PHONY : install-pyenv
 install-pyenv :
@@ -70,12 +83,10 @@ install-pyenv :
 
 .PHONY : install-nvim
 install-nvim :
-	${ROOT}/nvim-setup.bash.sh
-
-
-#===============================================================================
-docker-ubuntu16.04-cpu :  ## TODO
-	echo "pass"
+	# install neovim
+	# - https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
+	sudo apt-get install -y neovim python3-neovim
+	${COMMAND_DIR_PATH}/nvim-setup.bash.sh
 
 .PHONY : ubuntu16.04-docker
 ubuntu16.04-docker :
@@ -88,9 +99,16 @@ ubuntu16.04-docker :
 	${MAKE} install-nvim
 	exec zsh
 
-ubuntu16.04-docker-opengl-gpu :  ## TODO
-	echo "pass"
+.PHONY : ubuntu18.04-docker
+ubuntu18.04-docker :  ## ubuntu18.04
+	${MAKE} preprocess
+	${MAKE} install-git
+	${MAKE} install-screen
+	${MAKE} install-zsh
+	${MAKE} install-python-default
+	${MAKE} install-nvim
 
+	${MAKE} install-pyenv
 
 #===============================================================================
 # INSTALL
