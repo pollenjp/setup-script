@@ -69,12 +69,13 @@ install-zsh :
 
 .PHONY : install-python-default
 install-python-default :
-	sudo apt update -y 
-	sudo apt upgrade -y 
+	sudo apt update -y
+	sudo apt upgrade -y
 	sudo apt install -y \
 		python3 \
 		python3-dev \
 		python3-pip
+	pip3 install --user --upgrade pip
 	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
 
 .PHONY : install-pyenv
