@@ -19,34 +19,30 @@ ifndef GPU
 	@${MAKE} error ERROR_MESSAGE="GPU"
 endif
 
-.PHONY : error
-error :  ## errors処理を外部に記述することで好きなエラーメッセージをprintfで記述可能.
-	$(error "${ERROR_MESSAGE}")
-
-.PHONY : ubuntu16.04-desktop
-ubuntu16.04-desktop :
-	${MAKE} preprocess
-	${ROOT}/ubuntu16.04.desktop.bash.sh
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-nvim
-
-	${MAKE} install-pyenv
-
 .PHONY : ubuntu18.04-desktop
-ubuntu18.04-desktop :
+ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} preprocess
-#	Ubuntu18.04
 	${ROOT}/ubuntu18.04.desktop.bash.sh
 	${MAKE} install-git
 	${MAKE} install-screen
 	${MAKE} install-zsh
 	${MAKE} install-python-default
 	${MAKE} install-nvim
-
 	${MAKE} install-pyenv
+
+.PHONY : ubuntu18.04-docker
+ubuntu18.04-docker :  ## ubuntu18.04
+	${MAKE} preprocess
+	${MAKE} install-git
+	${MAKE} install-screen
+	${MAKE} install-zsh
+	${MAKE} install-python-default
+	${MAKE} install-nvim
+	${MAKE} install-pyenv
+
+###########
+# command #
+###########
 
 .PHONY : install-git
 install-git :
@@ -78,10 +74,6 @@ install-python-default :
 	pip3 install --user --upgrade pip
 	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
 
-.PHONY : install-pyenv
-install-pyenv :
-	${ROOT}/python-setup/pyenv-setup.bash.sh
-
 .PHONY : install-nvim
 install-nvim :
 	# install neovim
@@ -89,43 +81,43 @@ install-nvim :
 	sudo apt-get install -y neovim python3-neovim
 	${COMMAND_DIR_PATH}/nvim-setup.bash.sh
 
-.PHONY : ubuntu16.04-docker
-ubuntu16.04-docker :
-	${MAKE} preprocess
-	${ROOT}/ubuntu16.04.docker.bash.sh
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-nvim
-	exec zsh
+.PHONY : install-pyenv
+install-pyenv :
+	${COMMAND_DIR_PATH}/pyenv-setup.bash.sh
 
-.PHONY : ubuntu18.04-docker
-ubuntu18.04-docker :  ## ubuntu18.04
-	${MAKE} preprocess
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-nvim
+##########
+# opencv #
+##########
 
-	${MAKE} install-pyenv
-
-#===============================================================================
-# INSTALL
-.PHONY : install-opencv 
+.PHONY : install-opencv
 install-opencv :  ##  install OPENCV spesify variable. ex: OPENCV_VERSION=4.0.1
 ifndef OPENCV_VERSION
 	$(error "=== OPENCV_VERSION variable should be set ===")
 endif
 	OPENCV_VERSION=${OPENCV_VERSION} ./opencv-install.bash.sh
 
+#########
+# utils #
+#########
 
-#===============================================================================
-.PHONY: help
-help :  ## TODO
-	echo "pass"
+.PHONY : help
+help :
+	@echo ${MAKEFILE_LIST}
+	@awk \
+		'BEGIN { print "==BEGIN==" } \
+		/^[.a-zA-Z0-9_-]+ ?:  .*##.*/ \
+		{ \
+			printf "\033[36m%-55s\033[0m", $$1; \
+			c=""; \
+			for(i=4;i<=NF;i++) \
+			{ \
+				c=c $$i" "; \
+			} \
+			printf c"\n" \
+		} \
+		END { print "==END==" }' \
+		$(MAKEFILE_LIST)
 
-test :  ## test
-		exec zsh
-		echo "Hello"
+.PHONY : error
+error :  ## errors処理を外部に記述することで好きなエラーメッセージをprintfで記述可能.
+	$(error "${ERROR_MESSAGE}")
