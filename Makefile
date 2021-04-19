@@ -19,6 +19,16 @@ ifndef GPU
 	@${MAKE} error ERROR_MESSAGE="GPU"
 endif
 
+.PHONY : ubuntu20.04-desktop
+ubuntu20.04-desktop :  # ubuntu20.04-desktop
+	${MAKE} preprocess
+	${MAKE} install-git
+	${MAKE} install-screen
+	${MAKE} install-zsh
+	${MAKE} install-python-default
+	${MAKE} install-nvim
+	${MAKE} install-pyenv
+
 .PHONY : ubuntu18.04-desktop
 ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} preprocess
