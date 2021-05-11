@@ -28,6 +28,7 @@ ubuntu20.04-desktop :  # ubuntu20.04-desktop
 	${MAKE} install-python-default
 	${MAKE} install-nvim
 	${MAKE} install-pyenv
+	${MAKE} install-goenv
 
 .PHONY : ubuntu18.04-desktop
 ubuntu18.04-desktop :  # ubuntu18.04
@@ -39,6 +40,7 @@ ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} install-python-default
 	${MAKE} install-nvim
 	${MAKE} install-pyenv
+	${MAKE} install-goenv
 
 .PHONY : ubuntu18.04-docker
 ubuntu18.04-docker :  ## ubuntu18.04
@@ -49,6 +51,7 @@ ubuntu18.04-docker :  ## ubuntu18.04
 	${MAKE} install-python-default
 	${MAKE} install-nvim
 	${MAKE} install-pyenv
+	${MAKE} install-goenv
 
 ###########
 # command #
@@ -94,6 +97,10 @@ install-nvim :
 .PHONY : install-pyenv
 install-pyenv :
 	${COMMAND_DIR_PATH}/pyenv-setup.bash.sh
+
+.PHONY : install-goenv
+install-pyenv :
+	${COMMAND_DIR_PATH}/goenv-setup.bash.sh
 
 ##########
 # opencv #
