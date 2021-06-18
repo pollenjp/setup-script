@@ -85,7 +85,7 @@ install-python-default :
 		python3-dev \
 		python3-pip
 	pip3 install --user --upgrade pip
-	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
+	${COMMAND_DIR_PATH}/python-setup.bash.sh
 
 .PHONY : install-nvim
 install-nvim :
