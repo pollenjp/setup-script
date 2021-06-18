@@ -99,7 +99,7 @@ install-pyenv :
 	${COMMAND_DIR_PATH}/pyenv-setup.bash.sh
 
 .PHONY : install-goenv
-install-pyenv :
+install-goenv :
 	${COMMAND_DIR_PATH}/goenv-setup.bash.sh
 
 ##########
