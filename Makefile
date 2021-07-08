@@ -156,7 +156,7 @@ ifeq (${OS_NAME},ubuntu)
 		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 		xz-utils tk-dev libffi-dev liblzma-dev python-openssl
 else ifeq (${OS_NAME},centos7)
-	yum install -y \
+	sudo yum install -y \
 		gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
 else
 	${MAKE} error
