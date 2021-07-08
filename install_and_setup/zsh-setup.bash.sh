@@ -29,7 +29,3 @@ fi
 
 # Back to working directory
 cd ${CWD}
-
-# TODO: need this?
-# better to load .zshrc file
-zsh -c "source ${HOME}/.zshrc"

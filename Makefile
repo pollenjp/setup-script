@@ -1,23 +1,39 @@
 SHELL := /bin/bash
 
 ROOT := $(shell echo "$(shell pwd)")
-PENCV_VERSION :=
 COMMAND_DIR_PATH := ${ROOT}/install_and_setup
 
-# 'true' or 'false'
-GPU :=
+OS_NAME :=
+HAS_GPU :=
 ERROR_MESSAGE :=
+
+# TODO: TRY principles
+# DOTFILES_REPOS=git@github.com:pollenjp/dotfiles.git
+# DOTFILES_DIR_PATH="${HOME}/dotfiles"
 
 export
 
 #===============================================================================
 .PHONY : preprocess
 preprocess :
-# [Bash - adding color - NoskeWiki printf zsh](http://www.andrewnoske.com/wiki/Bash_-_adding_color)
-ifndef GPU
-	@printf "\e[101m %s \e[0m \n" "Variable GPU does not set. ('true' or 'false')"
-	@${MAKE} error ERROR_MESSAGE="GPU"
+ifndef OS_NAME
+	@${MAKE} error ERROR_MESSAGE="Variable OS_NAME does not set. ('ubuntu', 'centos7')"
 endif
+ifndef HAS_GPU
+	@${MAKE} error ERROR_MESSAGE="Variable HAS_GPU does not set. ('true' or 'false')"
+endif
+
+.PHONY : centos7-server
+centos7-server :
+	${MAKE} preprocess
+	${MAKE} install-git
+	${MAKE} install-screen
+	${MAKE} install-zsh
+	${MAKE} install-python-default
+	${MAKE} install-vim
+	${MAKE} install-pyenv
+	${MAKE} install-goenv
+	${MAKE} print-relogin-message
 
 .PHONY : ubuntu20.04-desktop
 ubuntu20.04-desktop :  # ubuntu20.04-desktop
@@ -26,9 +42,10 @@ ubuntu20.04-desktop :  # ubuntu20.04-desktop
 	${MAKE} install-screen
 	${MAKE} install-zsh
 	${MAKE} install-python-default
-	${MAKE} install-nvim
+	${MAKE} install-vim
 	${MAKE} install-pyenv
 	${MAKE} install-goenv
+	${MAKE} print-relogin-message
 
 .PHONY : ubuntu18.04-desktop
 ubuntu18.04-desktop :  # ubuntu18.04
@@ -38,9 +55,10 @@ ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} install-screen
 	${MAKE} install-zsh
 	${MAKE} install-python-default
-	${MAKE} install-nvim
+	${MAKE} install-vim
 	${MAKE} install-pyenv
 	${MAKE} install-goenv
+	${MAKE} print-relogin-message
 
 .PHONY : ubuntu18.04-docker
 ubuntu18.04-docker :  ## ubuntu18.04
@@ -49,9 +67,10 @@ ubuntu18.04-docker :  ## ubuntu18.04
 	${MAKE} install-screen
 	${MAKE} install-zsh
 	${MAKE} install-python-default
-	${MAKE} install-nvim
+	${MAKE} install-vim
 	${MAKE} install-pyenv
 	${MAKE} install-goenv
+	${MAKE} print-relogin-message
 
 ###########
 # command #
@@ -59,25 +78,48 @@ ubuntu18.04-docker :  ## ubuntu18.04
 
 .PHONY : install-git
 install-git :
+ifeq (${OS_NAME},ubuntu)
 	sudo apt install -y git
+else ifeq (${OS_NAME},centos7)
+	sudo yum install -y git
+else
+	${MAKE} error
+endif
 	${COMMAND_DIR_PATH}/git-setup.bash.sh
 
 .PHONY : install-screen
 install-screen :
+ifeq (${OS_NAME},ubuntu)
 	sudo apt install -y screen
-	${COMMAND_DIR_PATH}/screen-setup.bash.sh
+else ifeq (${OS_NAME},centos7)
+	sudo yum install -y screen
+else
+	${MAKE} error
+endif
+	DOTFILES_REPOS=${DOTFILES_REPOS} \
+		${COMMAND_DIR_PATH}/screen-setup.bash.sh
 
 .PHONY : install-zsh
 install-zsh :
+ifeq (${OS_NAME},ubuntu)
 	sudo apt install -y zsh
-	# chshでのパスワード要求を省略
+# chshでのパスワード要求を省略
 	sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh
-	# set zsh as login shell
+# set zsh as login shell
 	chsh -s /usr/bin/zsh
+else ifeq (${OS_NAME},centos7)
+	sudo yum install -y zsh 
+# set zsh as login shell
+	echo $(shell id --user --name) | xargs -I{} \
+		sudo usermod --shell /usr/bin/zsh {}
+else
+	${MAKE} error
+endif
 	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
 
 .PHONY : install-python-default
 install-python-default :
+ifeq (${OS_NAME},ubuntu)
 	sudo apt update -y
 	sudo apt upgrade -y
 	sudo apt install -y \
@@ -85,17 +127,40 @@ install-python-default :
 		python3-dev \
 		python3-pip
 	pip3 install --user --upgrade pip
+else ifeq (${OS_NAME},centos7)
+	sudo yum update -y
+	sudo yum install -y python3
+else
+	${MAKE} error
+endif
 	${COMMAND_DIR_PATH}/python-setup.bash.sh
 
-.PHONY : install-nvim
-install-nvim :
-	# install neovim
-	# - https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
-	sudo apt-get install -y neovim python3-neovim
-	${COMMAND_DIR_PATH}/nvim-setup.bash.sh
+.PHONY : install-vim
+install-vim :
+ifeq (${OS_NAME},ubuntu)
+	sudo apt install -y vim
+else ifeq (${OS_NAME},centos7)
+	sudo yum install -y vim
+else
+	${MAKE} error
+endif
+	${COMMAND_DIR_PATH}/vim-setup.bash.sh
 
 .PHONY : install-pyenv
 install-pyenv :
+# prerequisites
+# https://github.com/pyenv/pyenv/wiki/common-build-problems#prerequisites
+ifeq (${OS_NAME},ubuntu)
+	sudo apt-get install -y \
+		make build-essential libssl-dev zlib1g-dev libbz2-dev \
+		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+		xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+else ifeq (${OS_NAME},centos7)
+	yum install -y \
+		gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
+else
+	${MAKE} error
+endif
 	${COMMAND_DIR_PATH}/pyenv-setup.bash.sh
 
 .PHONY : install-goenv
@@ -136,5 +201,17 @@ help :
 		$(MAKEFILE_LIST)
 
 .PHONY : error
-error :  ## errors処理を外部に記述することで好きなエラーメッセージをprintfで記述可能.
+error :
+	@printf "\033[48;2;%d;%d;%dm" 255  85  85
+	@printf "\033[38;2;%d;%d;%dm" 255 255 255
+	@printf " %s \e[0m \n" ${ERROR_MESSAGE}
 	$(error "${ERROR_MESSAGE}")
+.PHONY : interupt_make
+interupt_make :
+	$(error "${ERROR_MESSAGE}")
+
+.PHONY : print-relogin-message
+print-relogin-message :
+	@printf "\033[48;2;%d;%d;%dm" 255 255   0
+	@printf "\033[38;2;%d;%d;%dm"   0   0   0
+	@printf " %s \e[0m \n" "Logout shell and login again!"
