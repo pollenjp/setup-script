@@ -214,7 +214,11 @@ interupt_make :
 print-relogin-message :
 	@printf "\033[48;2;%d;%d;%dm" 255 255   0
 	@printf "\033[38;2;%d;%d;%dm"   0   0   0
-	@printf "%s %s" \
-		"(pyenv) : Restart your login session for the changes to take effect." \
-		"          E.g. if you're in a GUI session, you need to fully log out and log back in."
+	@string_array=(\
+		"(pyenv) : Restart your login session for the changes to take effect.\n" \
+		"          E.g. if you're in a GUI session, you need to fully log out and log back in."\
+	);\
+		for msg in "$${string_array[@]}"; do\
+			printf "$$msg";\
+		done
 	@printf "\e[0m\n"
