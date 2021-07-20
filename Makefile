@@ -204,8 +204,10 @@ help :
 error :
 	@printf "\033[48;2;%d;%d;%dm" 255  85  85
 	@printf "\033[38;2;%d;%d;%dm" 255 255 255
-	@printf " %s \e[0m \n" ${ERROR_MESSAGE}
-	$(error "${ERROR_MESSAGE}")
+	@printf "%s" "${ERROR_MESSAGE}"
+	@printf "\e[0m\n"
+	@${MAKE} interupt_make
+
 .PHONY : interupt_make
 interupt_make :
 	$(error "${ERROR_MESSAGE}")
