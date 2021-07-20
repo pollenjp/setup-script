@@ -14,3 +14,4 @@ if [ ! -d ${HOME}/.local ]; then
 fi
 
 echo 'export PATH="${HOME}/.local/bin:${PATH}"' >> ${HOME}/.zprofile
+echo 'export PIPENV_VENV_IN_PROJECT=1' >> ${HOME}/.zshrc
