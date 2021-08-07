@@ -26,7 +26,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
 printf "\033[48;2;%d;%d;%dm" 255 255   0
 printf "\033[38;2;%d;%d;%dm"   0   0   0
-printf " %s \e[0m \n" \
+printf "%s\e[0m\n" \
   "Restart your login session for the changes to take effect.\nE.g. if you're in a GUI session, you need to fully log out and log back in."
 
 ####################
