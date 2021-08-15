@@ -24,7 +24,7 @@ if [ ! -h "${HOME}/.zshrc" ] && [ -f "${HOME}/.zshrc" ]; then
 fi
 if [ ! -h "${HOME}/.zshrc" ];
 then
-  ln -s "${DOTFILES_DIR_PATH}/_zshrc" "${HOME}/.zshrc"
+  ln -s "${DOTFILES_DIR_PATH}/.zshrc" "${HOME}/.zshrc"
 fi
 
 # Back to working directory
