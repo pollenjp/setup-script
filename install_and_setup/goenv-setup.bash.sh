@@ -5,8 +5,9 @@ if [ ! -d "${GOENV_DIR}" ]; then
   git clone https://github.com/syndbg/goenv.git "${GOENV_DIR}"
 fi
 
-echo 'export GOENV_ROOT="$HOME/.goenv"' >> ~/.zshenv
-echo 'export PATH="$GOENV_ROOT/bin:$PATH"' >> ~/.zshenv
-echo 'eval "$(goenv init -)"' >> ~/.zshenv
-echo 'export PATH="$GOROOT/bin:$PATH"' >> ~/.zshenv
-echo 'export PATH="$PATH:$GOPATH/bin"' >> ~/.zshenv
+CONFIG_FILE=~/.zshenv
+echo 'export GOENV_ROOT="$HOME/.goenv"'     >> ${CONFIG_FILE}
+echo 'export PATH="$GOENV_ROOT/bin:$PATH"'  >> ${CONFIG_FILE}
+echo 'eval "$(goenv init -)"'               >> ${CONFIG_FILE}
+echo 'export PATH="$GOROOT/bin:$PATH"'      >> ${CONFIG_FILE}
+echo 'export PATH="$PATH:$GOPATH/bin"'      >> ${CONFIG_FILE}
