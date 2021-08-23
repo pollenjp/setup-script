@@ -50,6 +50,7 @@ ubuntu20.04-desktop :  # ubuntu20.04-desktop
 .PHONY : ubuntu18.04-desktop
 ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} preprocess
+	${MAKE} ubuntu18.04-required
 	${ROOT}/ubuntu18.04.desktop.bash.sh
 	${MAKE} install-git
 	${MAKE} install-screen
@@ -63,6 +64,7 @@ ubuntu18.04-desktop :  # ubuntu18.04
 .PHONY : ubuntu18.04-docker
 ubuntu18.04-docker :  ## ubuntu18.04
 	${MAKE} preprocess
+	${MAKE} ubuntu18.04-required
 	${MAKE} install-git
 	${MAKE} install-screen
 	${MAKE} install-zsh
@@ -71,6 +73,12 @@ ubuntu18.04-docker :  ## ubuntu18.04
 	${MAKE} install-pyenv
 	${MAKE} install-goenv
 	${MAKE} print-relogin-message
+
+.PHONY : ubuntu18.04
+ubuntu18.04-required:
+	sudo apt install -y \
+		locales locales-all
+	echo "export LANG=en_US.UTF-8" >> ~/.zshrc
 
 ###########
 # command #
