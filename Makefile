@@ -116,7 +116,7 @@ ifeq (${OS_NAME},ubuntu)
 # set zsh as login shell
 	chsh -s /usr/bin/zsh
 else ifeq (${OS_NAME},centos7)
-	sudo yum install -y zsh 
+	sudo yum install -y zsh
 # set zsh as login shell
 	echo $(shell id --user --name) | xargs -I{} \
 		sudo usermod --shell /usr/bin/zsh {}
