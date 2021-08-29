@@ -28,6 +28,7 @@ centos7-server :
 	${MAKE} preprocess
 	${MAKE} install-git
 	${MAKE} install-screen
+	${MAKE} install-tmux
 	${MAKE} install-zsh
 	${MAKE} install-python-default
 	${MAKE} install-vim
@@ -40,6 +41,7 @@ ubuntu20.04-desktop :  # ubuntu20.04-desktop
 	${MAKE} preprocess
 	${MAKE} install-git
 	${MAKE} install-screen
+	${MAKE} install-tmux
 	${MAKE} install-zsh
 	${MAKE} install-python-default
 	${MAKE} install-vim
@@ -54,6 +56,7 @@ ubuntu18.04-desktop :  # ubuntu18.04
 	${ROOT}/ubuntu18.04.desktop.bash.sh
 	${MAKE} install-git
 	${MAKE} install-screen
+	${MAKE} install-tmux
 	${MAKE} install-zsh
 	${MAKE} install-python-default
 	${MAKE} install-vim
@@ -67,6 +70,7 @@ ubuntu18.04-docker :  ## ubuntu18.04
 	${MAKE} ubuntu18.04-required
 	${MAKE} install-git
 	${MAKE} install-screen
+	${MAKE} install-tmux
 	${MAKE} install-zsh
 	${MAKE} install-python-default
 	${MAKE} install-vim
@@ -104,8 +108,18 @@ else ifeq (${OS_NAME},centos7)
 else
 	${MAKE} error
 endif
-	DOTFILES_REPOS=${DOTFILES_REPOS} \
-		${COMMAND_DIR_PATH}/screen-setup.bash.sh
+	${COMMAND_DIR_PATH}/screen-setup.bash.sh ${DOTFILES_REPOS}
+
+.PHONY : install-tmux
+install-tmux:
+ifeq (${OS_NAME},ubuntu)
+	sudo apt install -y tmux
+else ifeq (${OS_NAME},centos7)
+	sudo yum install -y tmux
+else
+	${MAKE} error
+endif
+	${COMMAND_DIR_PATH}/tmux-setup.bash.sh ${DOTFILES_REPOS}
 
 .PHONY : install-zsh
 install-zsh :
