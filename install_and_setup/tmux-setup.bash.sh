@@ -15,8 +15,8 @@ fi
 # .screenrc #
 #############
 
-file1=${HOME}/.screenrc
-file2=${DOTFILES_DIR_PATH}/_screenrc
+file1=${HOME}/.tmux.conf
+file2=${DOTFILES_DIR_PATH}/.tmux.conf
 if [ -e ${file1} ];
 then
   rm ${file1}
