@@ -33,7 +33,7 @@ centos7-server :
 	${MAKE} install-python-default
 	${MAKE} install-vim
 	${MAKE} install-pyenv
-	${MAKE} install-goenv
+	${MAKE} install-go
 	${MAKE} print-relogin-message
 
 .PHONY : ubuntu20.04-desktop
@@ -46,7 +46,7 @@ ubuntu20.04-desktop :  # ubuntu20.04-desktop
 	${MAKE} install-python-default
 	${MAKE} install-vim
 	${MAKE} install-pyenv
-	${MAKE} install-goenv
+	${MAKE} install-go
 	${MAKE} print-relogin-message
 
 .PHONY : ubuntu18.04-desktop
@@ -61,7 +61,7 @@ ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} install-python-default
 	${MAKE} install-vim
 	${MAKE} install-pyenv
-	${MAKE} install-goenv
+	${MAKE} install-go
 	${MAKE} print-relogin-message
 
 .PHONY : ubuntu18.04-docker
@@ -75,7 +75,7 @@ ubuntu18.04-docker :  ## ubuntu18.04
 	${MAKE} install-python-default
 	${MAKE} install-vim
 	${MAKE} install-pyenv
-	${MAKE} install-goenv
+	${MAKE} install-go
 	${MAKE} print-relogin-message
 
 .PHONY : ubuntu18.04
@@ -185,9 +185,9 @@ else
 endif
 	${COMMAND_DIR_PATH}/pyenv-setup.bash.sh
 
-.PHONY : install-goenv
-install-goenv :
-	${COMMAND_DIR_PATH}/goenv-setup.bash.sh
+.PHONY : install-go
+install-go :
+	${COMMAND_DIR_PATH}/go-setup.bash.sh
 
 ##########
 # opencv #
