@@ -49,6 +49,19 @@ ubuntu20.04-desktop :  # ubuntu20.04-desktop
 	${MAKE} install-go
 	${MAKE} print-relogin-message
 
+.PHONY : ubuntu20.04-user
+ubuntu20.04-user :  # ubuntu20.04-user
+	${MAKE} preprocess
+	${MAKE} install-git
+	${MAKE} install-screen
+	${MAKE} install-tmux
+	${MAKE} install-zsh
+	${MAKE} install-python-default
+	${MAKE} install-vim
+	${MAKE} install-pyenv
+	${MAKE} install-go
+	${MAKE} print-relogin-message
+
 .PHONY : ubuntu18.04-desktop
 ubuntu18.04-desktop :  # ubuntu18.04
 	${MAKE} preprocess
@@ -80,9 +93,8 @@ ubuntu18.04-docker :  ## ubuntu18.04
 
 .PHONY : ubuntu18.04
 ubuntu18.04-required:
-	sudo apt install -y \
-		locales locales-all
-	echo "export LANG=en_US.UTF-8" >> ~/.zshrc
+	app=(locales locales-all); \
+		dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 
 ###########
 # command #
@@ -91,7 +103,7 @@ ubuntu18.04-required:
 .PHONY : install-git
 install-git :
 ifeq (${OS_NAME},ubuntu)
-	sudo apt install -y git
+	app=(git); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 else ifeq (${OS_NAME},centos7)
 	sudo yum install -y git
 else
@@ -102,7 +114,7 @@ endif
 .PHONY : install-screen
 install-screen :
 ifeq (${OS_NAME},ubuntu)
-	sudo apt install -y screen
+	app=(screen); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 else ifeq (${OS_NAME},centos7)
 	sudo yum install -y screen
 else
@@ -113,7 +125,7 @@ endif
 .PHONY : install-tmux
 install-tmux:
 ifeq (${OS_NAME},ubuntu)
-	sudo apt install -y tmux
+	app=(tmux); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 else ifeq (${OS_NAME},centos7)
 	sudo yum install -y tmux
 else
@@ -124,9 +136,9 @@ endif
 .PHONY : install-zsh
 install-zsh :
 ifeq (${OS_NAME},ubuntu)
-	sudo apt install -y zsh
+	app=(zsh); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 # chshでのパスワード要求を省略
-	sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh
+	sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh || echo "failed sudo"
 # set zsh as login shell
 	chsh -s /usr/bin/zsh
 else ifeq (${OS_NAME},centos7)
@@ -138,6 +150,7 @@ else
 	${MAKE} error
 endif
 	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
+	echo "export LANG=en_US.UTF-8" >> ~/.zshrc
 
 .PHONY : install-python-default
 install-python-default :
@@ -160,7 +173,7 @@ endif
 .PHONY : install-vim
 install-vim :
 ifeq (${OS_NAME},ubuntu)
-	sudo apt install -y vim
+	app=(vim); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 else ifeq (${OS_NAME},centos7)
 	sudo yum install -y vim
 else
@@ -173,10 +186,11 @@ install-pyenv :
 # prerequisites
 # https://github.com/pyenv/pyenv/wiki/common-build-problems#prerequisites
 ifeq (${OS_NAME},ubuntu)
-	sudo apt-get install -y \
+	app=(\
 		make build-essential libssl-dev zlib1g-dev libbz2-dev \
 		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-		xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+		xz-utils tk-dev libffi-dev liblzma-dev python-openssl); \
+	dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 else ifeq (${OS_NAME},centos7)
 	sudo yum install -y \
 		gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
