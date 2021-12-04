@@ -1,11 +1,10 @@
-# memo : my python (Anaconda) envirnment
-Write files(.sh) to create my Python envirnment automatically.
+# shell script for setup
 
+this is only for me
 
-```
-$ ./ubuntu16.04.sh
-$ ./python_install.sh
-$ ./nvim_set.sh
-$ ./ruby_on_rails.sh
+## How to use
 
+```sh
+make ubuntu18.04-docker HAS_GPU=true OS_NAME=ubuntu
+make ubuntu20.04-desktop HAS_GPU=true OS_NAME=ubuntu
 ```
