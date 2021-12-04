@@ -138,7 +138,10 @@ install-zsh :
 ifeq (${OS_NAME},ubuntu)
 	app=(zsh); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
 # chshでのパスワード要求を省略
-	sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh || echo "failed sudo"
+	username=$(shell id -u --name); \
+		if groups $${username} | grep -q '\bsudo\b'; then \
+			sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh;\
+		fi
 # set zsh as login shell
 	chsh -s /usr/bin/zsh
 else ifeq (${OS_NAME},centos7)
