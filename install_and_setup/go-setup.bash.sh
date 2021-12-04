@@ -1,7 +1,9 @@
 #!/bin/bash -eux
 
 go_install_path=${HOME}/.local_go
+mkdir -p ${go_install_path}
 tar_gz_filename=go1.17.1.linux-amd64.tar.gz
+mkdir -p ${go_install_path}/archive
 tar_gz_filepath=${go_install_path}/archive/${tar_gz_filename}
 
 if [[ -d "${tar_gz_filepath}" ]]; then
