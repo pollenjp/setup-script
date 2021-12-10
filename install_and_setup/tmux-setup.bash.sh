@@ -21,4 +21,4 @@ if [ -e ${file1} ];
 then
   rm ${file1}
 fi
-ln -s ${file2} ${file1} 
+ln -s ${file2} ${file1}
