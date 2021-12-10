@@ -10,7 +10,7 @@ if [[ -d "${tar_gz_filepath}" ]]; then
     exit 1
 fi
 if [[ ! -e "${tar_gz_filepath}" ]]; then
-    wget -C https://golang.org/dl/${tar_gz_filename} -O ${tar_gz_filepath}
+    wget -c https://golang.org/dl/${tar_gz_filename} -O ${tar_gz_filepath}
 fi
 
 rm -rf ${go_install_path}
