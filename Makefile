@@ -1,9 +1,5 @@
 SHELL := /bin/bash
 
-ROOT := $(shell echo "$(shell pwd)")
-COMMAND_DIR_PATH := ${ROOT}/install_and_setup
-
-OS_NAME :=
 HAS_GPU :=
 ERROR_MESSAGE :=
 
@@ -13,231 +9,35 @@ ERROR_MESSAGE :=
 
 export
 
-#===============================================================================
-.PHONY : preprocess
-preprocess :
-ifndef OS_NAME
-	@${MAKE} error ERROR_MESSAGE="Variable OS_NAME does not set. ('ubuntu', 'centos7')"
-endif
+.PHONY: debug
+debug:
+	vagrant up
+
+.PHONY: clear
+clear:
+	-vagrant halt
+	-vagrant destroy -f
+
+.PHONY: preprocess
+preprocess:  ## TODO: check gpu
 ifndef HAS_GPU
 	@${MAKE} error ERROR_MESSAGE="Variable HAS_GPU does not set. ('true' or 'false')"
 endif
 
-.PHONY : centos7-server
-centos7-server :
-	${MAKE} preprocess
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-tmux
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-vim
-	${MAKE} install-pyenv
-	${MAKE} install-go
-	${MAKE} print-relogin-message
-
-.PHONY : ubuntu20.04-desktop
-ubuntu20.04-desktop :  # ubuntu20.04-desktop
-	${MAKE} preprocess
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-tmux
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-vim
-	${MAKE} install-pyenv
-	${MAKE} install-go
-	${MAKE} print-relogin-message
-
-.PHONY : ubuntu20.04-user
-ubuntu20.04-user :  # ubuntu20.04-user
-	${MAKE} preprocess
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-tmux
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-vim
-	${MAKE} install-pyenv
-	${MAKE} install-go
-	${MAKE} print-relogin-message
-
-.PHONY : ubuntu18.04-desktop
-ubuntu18.04-desktop :  # ubuntu18.04
-	${MAKE} preprocess
-	${MAKE} ubuntu18.04-required
-	${ROOT}/ubuntu18.04.desktop.bash.sh
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-tmux
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-vim
-	${MAKE} install-pyenv
-	${MAKE} install-go
-	${MAKE} print-relogin-message
-
-.PHONY : ubuntu18.04-docker
-ubuntu18.04-docker :  ## ubuntu18.04
-	${MAKE} preprocess
-	${MAKE} ubuntu18.04-required
-	${MAKE} install-git
-	${MAKE} install-screen
-	${MAKE} install-tmux
-	${MAKE} install-zsh
-	${MAKE} install-python-default
-	${MAKE} install-vim
-	${MAKE} install-pyenv
-	${MAKE} install-go
-	${MAKE} print-relogin-message
-
-.PHONY : ubuntu18.04
-ubuntu18.04-required:
-	app=(locales locales-all); \
-		dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-
-###########
-# command #
-###########
-
-.PHONY : install-git
-install-git :
-ifeq (${OS_NAME},ubuntu)
-	app=(git); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-else ifeq (${OS_NAME},centos7)
-	sudo yum install -y git
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/git-setup.bash.sh
-
-.PHONY : install-screen
-install-screen :
-ifeq (${OS_NAME},ubuntu)
-	app=(screen); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-else ifeq (${OS_NAME},centos7)
-	sudo yum install -y screen
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/screen-setup.bash.sh ${DOTFILES_REPOS}
-
-.PHONY : install-tmux
-install-tmux:
-ifeq (${OS_NAME},ubuntu)
-	app=(tmux); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-else ifeq (${OS_NAME},centos7)
-	sudo yum install -y tmux
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/tmux-setup.bash.sh ${DOTFILES_REPOS}
-
-.PHONY : install-zsh
-install-zsh :
-ifeq (${OS_NAME},ubuntu)
-	app=(zsh); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-# chshでのパスワード要求を省略
-	username=$(shell id -u --name); \
-		if groups $${username} | grep -q '\bsudo\b'; then \
-			sudo sed --in-place -e '/auth.*required.*pam_shells.so/s/required/sufficient/g' /etc/pam.d/chsh;\
-		fi
-# set zsh as login shell
-	chsh -s /usr/bin/zsh
-else ifeq (${OS_NAME},centos7)
-	sudo yum install -y zsh
-# set zsh as login shell
-	echo $(shell id --user --name) | xargs -I{} \
-		sudo usermod --shell /usr/bin/zsh {}
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/zsh-setup.bash.sh
-	echo "export LANG=en_US.UTF-8" >> ~/.zshrc
-
-.PHONY : install-python-default
-install-python-default :
-ifeq (${OS_NAME},ubuntu)
-	sudo apt update -y
-	sudo apt upgrade -y
-	sudo apt install -y \
-		python3 \
-		python3-dev \
-		python3-pip
-	pip3 install --user --upgrade pip
-else ifeq (${OS_NAME},centos7)
-	sudo yum update -y
-	sudo yum install -y python3
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/python-setup.bash.sh
-
-.PHONY : install-vim
-install-vim :
-ifeq (${OS_NAME},ubuntu)
-	app=(vim); dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-else ifeq (${OS_NAME},centos7)
-	sudo yum install -y vim
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/vim-setup.bash.sh
-
-.PHONY : install-pyenv
-install-pyenv :
-# prerequisites
-# https://github.com/pyenv/pyenv/wiki/common-build-problems#prerequisites
-ifeq (${OS_NAME},ubuntu)
-	app=(\
-		make build-essential libssl-dev zlib1g-dev libbz2-dev \
-		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-		xz-utils tk-dev libffi-dev liblzma-dev python-openssl); \
-	dpkg -l --no-pager $${app[@]} || sudo apt install -y $${app[@]}
-else ifeq (${OS_NAME},centos7)
-	sudo yum install -y \
-		gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel
-else
-	${MAKE} error
-endif
-	${COMMAND_DIR_PATH}/pyenv-setup.bash.sh
-
-.PHONY : install-go
-install-go :
-	${COMMAND_DIR_PATH}/go-setup.bash.sh
-
-##########
-# opencv #
-##########
-
-.PHONY : install-opencv
-install-opencv :  ##  install OPENCV spesify variable. ex: OPENCV_VERSION=4.0.1
-ifndef OPENCV_VERSION
-	$(error "=== OPENCV_VERSION variable should be set ===")
-endif
-	OPENCV_VERSION=${OPENCV_VERSION} ./opencv-install.bash.sh
 
 #########
 # utils #
 #########
 
 .PHONY : help
-help :
-	@echo ${MAKEFILE_LIST}
-	@awk \
-		'BEGIN { print "==BEGIN==" } \
-		/^[.a-zA-Z0-9_-]+ ?:  .*##.*/ \
-		{ \
-			printf "\033[36m%-55s\033[0m", $$1; \
-			c=""; \
-			for(i=4;i<=NF;i++) \
-			{ \
-				c=c $$i" "; \
-			} \
-			printf c"\n" \
-		} \
-		END { print "==END==" }' \
-		$(MAKEFILE_LIST)
+help:  ## show help
+	@cat $(MAKEFILE_LIST) \
+		| grep -E '^[.a-zA-Z0-9_-]+ *:.*##.*' \
+		| xargs -I'<>' \
+			bash -c "\
+				printf '<>' | awk -F'[:]' '{ printf \"\033[36m%-15s\033[0m\", \$$1 }'; \
+				printf '<>' | awk -F'[##]' '{ printf \"%s\n\", \$$3 }'; \
+			"
 
 .PHONY : error
 error :
@@ -250,16 +50,3 @@ error :
 .PHONY : interupt_make
 interupt_make :
 	$(error "${ERROR_MESSAGE}")
-
-.PHONY : print-relogin-message
-print-relogin-message :
-	@printf "\033[48;2;%d;%d;%dm" 255 255   0
-	@printf "\033[38;2;%d;%d;%dm"   0   0   0
-	@string_array=(\
-		"(pyenv) : Restart your login session for the changes to take effect.\n" \
-		"          E.g. if you're in a GUI session, you need to fully log out and log back in."\
-	);\
-		for msg in "$${string_array[@]}"; do\
-			printf "$$msg";\
-		done
-	@printf "\e[0m\n"

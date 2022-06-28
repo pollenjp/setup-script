@@ -1,0 +1,7 @@
+- name: setup
+  hosts: main_machine
+  roles: []
+  tasks:
+    - name: install os requirements
+      debug:
+        var: ansible_distribution_major_version

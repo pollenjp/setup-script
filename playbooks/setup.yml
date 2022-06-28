@@ -1,0 +1,44 @@
+- name: setup
+  hosts: localhost
+  roles: []
+  tasks:
+    - name: install os requirements
+      become: true
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+        upgrade: full
+    - name: install tools
+      become: true
+      apt:
+        name:
+          #########
+          # basic #
+          #########
+          - curl
+          - less
+          - git
+          - screen
+          - tmux
+          - tree
+          - vim
+          - wget
+          - zsh
+          #########
+          # utils #
+          #########
+          - fonts-vlgothic
+          - nasm
+          - net-tools
+          - nkf
+          # network command (https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/)
+          - nmap
+          - texlive-full
+        update_cache: true
+        cache_valid_time: 3600
+
+- name: setup
+  hosts: localhost
+  roles:
+    - role: install-pyenv
+    - role: install-go
