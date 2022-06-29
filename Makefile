@@ -3,10 +3,6 @@ SHELL := /bin/bash
 HAS_GPU :=
 ERROR_MESSAGE :=
 
-# TODO: TRY principles
-# DOTFILES_REPOS=git@github.com:pollenjp/dotfiles.git
-# DOTFILES_DIR_PATH="${HOME}/dotfiles"
-
 export
 
 .PHONY: debug
