@@ -63,7 +63,7 @@
 
 - name: install pyenv-virtualenv
   git:
-    repo: "https://github.com/pyenv/pyenv.git"
+    repo: "https://github.com/pyenv/pyenv-virtualenv.git"
     dest: "$HOME/.pyenv/plugins/pyenv-virtualenv"
     force: yes
 - name: update shell config
