@@ -42,4 +42,5 @@
   roles:
     - role: install-dotfiles
     - role: install-pyenv
+    - role: install-rbenv
     - role: install-go
