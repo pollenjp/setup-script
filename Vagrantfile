@@ -54,11 +54,8 @@ Vagrant.configure("2") do |config|
 
       v.vm.provision "ansible_local" do |ansible|
         playbook_dirpath = Pathname.new(".").join("playbooks")
-        # ansible.playbook = playbook_dirpath.join("debug.yml")
         ansible.playbook = playbook_dirpath.join("setup.yml")
         ansible.inventory_path = playbook_dirpath.join("inventory").join("vagrant.yml")
-        # ansible.inventory_path = playbook_dirpath.join("inventory").join("vagrant.py")
-        # ansible.install = true
         ansible.limit = spec[:name]
       end
     end
