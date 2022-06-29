@@ -1,0 +1,10 @@
+- name: setup ssh server
+  hosts: localhost
+  connection: local
+  roles: []
+  tasks:
+    - name: install openssh
+      become: true
+      apt:
+        name: openssh-server
+        update_cache: yes

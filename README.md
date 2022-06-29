@@ -1,10 +1,16 @@
 # shell script for setup
 
-this is only for me
+## Ansible
 
-## How to use
+debug
 
 ```sh
-make ubuntu18.04-docker HAS_GPU=true OS_NAME=ubuntu
-make ubuntu20.04-desktop HAS_GPU=true OS_NAME=ubuntu
+vagrant up
+```
+
+production
+
+```sh
+cd playbooks
+ansible-playbook -i inventory/local.yml setup.yml
 ```

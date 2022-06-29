@@ -1,0 +1,11 @@
+---
+all:
+  hosts:
+  children:
+    localhost:
+      children:
+        vagrants:
+    vagrants:
+      hosts:
+        vagrant[0:1]:
+          ansible_connection: local

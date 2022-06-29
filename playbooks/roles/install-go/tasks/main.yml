@@ -1,0 +1,29 @@
+---
+# <https://go.dev/doc/install>
+
+- name: download and install go
+  args:
+    executable: /bin/bash
+  shell:
+    cmd: |
+      go_install_path=${HOME}/.local_go
+      mkdir -p ${go_install_path}/archive
+
+      tar_gz_filename={{ go_download_url.split("/")[-1] }}
+      tar_gz_filepath=${go_install_path}/archive/${tar_gz_filename}
+
+      if [[ -d "${tar_gz_filepath}" ]]; then
+          exit 1
+      fi
+      if [[ ! -e "${tar_gz_filepath}" ]]; then
+          wget -c {{ go_download_url }} -O ${tar_gz_filepath}
+      fi
+
+      rm -rf ${go_install_path}/go
+      tar -zxvf ${tar_gz_filepath} -C ${go_install_path}
+
+      setup_for_go () {
+          echo 'export PATH='${go_install_path}/go/bin':$PATH' >> $1
+      }
+      setup_for_go ${HOME}/.profile
+      setup_for_go ${HOME}/.zprofile
