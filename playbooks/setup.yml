@@ -40,5 +40,6 @@
 - name: setup
   hosts: localhost
   roles:
+    - role: install-dotfiles
     - role: install-pyenv
     - role: install-go

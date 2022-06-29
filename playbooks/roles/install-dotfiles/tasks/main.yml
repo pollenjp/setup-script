@@ -1,0 +1,11 @@
+- name: install pyenv
+  git:
+    repo: "git@github.com:pollenjp/dotfiles.git"
+    dest: "~/dotfiles"
+    force: yes
+    key_file: ~/.ssh/id_rsa
+    accept_hostkey: yes
+- name: optional
+  command:
+    chdir: "~/dotfiles"
+    cmd: make setup
