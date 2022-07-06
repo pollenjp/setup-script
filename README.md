@@ -12,5 +12,5 @@ production
 
 ```sh
 cd playbooks
-ansible-playbook -i inventory/local.yml setup.yml
+ansible-playbook --ask-become-pass -i inventory/local.yml setup.yml
 ```
