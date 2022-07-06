@@ -40,6 +40,44 @@
         update_cache: true
         cache_valid_time: 3600
 
+    - name: make .fonts/ directory
+      file:
+        path: ~/.fonts
+        state: directory
+        mode: "0755"
+        recurse: yes
+    - set_fact:
+        tmp_font_awesome_version: "6.1.1"
+    - set_fact:
+        tmp_font_awesome_name: fontawesome-free-{{ tmp_font_awesome_version }}-desktop
+    - set_fact:
+        tmp_fonts_directory: ~/.fonts/
+
+    - name: download font awesome v6
+      get_url:
+        url: https://use.fontawesome.com/releases/v{{ tmp_font_awesome_version }}/{{ tmp_font_awesome_name }}.zip
+        dest: "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}.zip"
+        mode: "0664"
+    - name: unzip
+      unarchive:
+        src: "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}.zip"
+        dest:  "{{ tmp_fonts_directory }}"
+        remote_src: yes
+    - name: copy
+      copy:
+        src: "{{ item }}"
+        dest:  ~/.fonts/
+        remote_src: yes
+      with_fileglob:
+        - "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}/otfs/*"
+    - name: clean unused files
+      file:
+        state: absent
+        path: "{{ item }}"
+      with_items:
+        - "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}"
+        - "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}.zip"
+
 - name: setup
   hosts: localhost
   roles:
