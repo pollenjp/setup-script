@@ -1,4 +1,4 @@
-- name: install requirements
+- name: install packages
   become: true
   apt:
     name:
@@ -19,10 +19,21 @@
       - libxmlsec1-dev
       - libffi-dev
       - liblzma-dev
+      # fonts
+      - fonts-powerline
+      - fonts-font-awesome
     update_cache: yes
     cache_valid_time: 3600
   when:
     - ansible_facts.distribution == "Ubuntu"
+
+- name: install packages
+  command: >
+    echo "Not supported!"
+    exit 1
+  when:
+    - ansible_facts.distribution != "Ubuntu"
+
 - name: install git
   become: true
   apt:
