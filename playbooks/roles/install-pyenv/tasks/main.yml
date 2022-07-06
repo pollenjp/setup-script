@@ -25,8 +25,8 @@
     - ansible_facts.distribution == "Ubuntu"
 
 - name: install packages
-  command: >
-    echo "Not supported!"
+  shell: |
+    echo "Not implemented yet!"
     exit 1
   when:
     - ansible_facts.distribution != "Ubuntu"
