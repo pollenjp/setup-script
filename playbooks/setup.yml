@@ -34,6 +34,9 @@
           # network command (https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/)
           - nmap
           - texlive-full
+          # fonts
+          - fonts-powerline
+          - fonts-font-awesome
         update_cache: true
         cache_valid_time: 3600
 
