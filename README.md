@@ -1,5 +1,9 @@
 # shell script for setup
 
+## requirements
+
+- ansible
+
 ## Ansible
 
 debug
