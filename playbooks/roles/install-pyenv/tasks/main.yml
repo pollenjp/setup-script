@@ -70,7 +70,7 @@
       if [[ -d "${pyenv_bin_path}" ]]\
       && [[ -n "${PATH##*${pyenv_bin_path}}" ]]\
       && [[ -n "${PATH##*${pyenv_bin_path}:*}" ]]; then
-          export PATH="${pyenv_bin_path}:$PATH"'
+          export PATH="${pyenv_bin_path}:$PATH"
       fi
 
       eval "$(pyenv init -)"
