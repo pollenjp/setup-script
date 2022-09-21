@@ -33,7 +33,7 @@
           - nkf
           # network command (https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/)
           - nmap
-          - texlive-full
+          # - texlive-full
           # fonts
           - fonts-powerline
           - fonts-font-awesome
@@ -61,12 +61,12 @@
     - name: unzip
       unarchive:
         src: "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}.zip"
-        dest:  "{{ tmp_fonts_directory }}"
+        dest: "{{ tmp_fonts_directory }}"
         remote_src: yes
     - name: copy
       copy:
         src: "{{ item }}"
-        dest:  ~/.fonts/
+        dest: ~/.fonts/
         remote_src: yes
       with_fileglob:
         - "{{ tmp_fonts_directory }}/{{ tmp_font_awesome_name }}/otfs/*"
